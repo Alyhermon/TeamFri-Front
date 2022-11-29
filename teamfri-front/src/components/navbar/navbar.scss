@@ -22,31 +22,45 @@ $color: #353A40;
         justify-content: center;
         gap: 10px;
 
-        li{
-            list-style: none;
-            padding: 10px;
+        .link{
+            grid-area: p;
+            margin: 0;
+            color: white;
+            text-decoration: none;
             transition: all 500ms;
-            display: grid;
-            grid-template-areas: 'icon p empy';
-            border-radius: 5px;
-            margin: 0px 5px;
-            font-size: 1.2rem;
-
-            .icon{
-                grid-area: icon;
-                font-size: 72px;
-                color: rgb(0, 0, 0);
-            }
-
-            Link{
-                grid-area: p;
-                margin: 0;
-            }
 
             &:hover{
-                background-color: white;
                 color: $color;
             }
+
+            li{
+                list-style: none;
+                padding: 10px;
+                transition: all 500ms;
+                display: grid;
+                grid-template-areas: 'icon p empy';
+                border-radius: 5px;
+                margin: 0px 10px;
+                font-size: 1.2rem;
+    
+                .icon{
+                    grid-area: icon;
+                    font-size: 72px;
+                    color: rgb(0, 0, 0);
+                }
+    
+                &:hover{
+                    background-color: white;
+                    color: $color;
+                }
+            }
+        }
+
+        .active{
+            background-color: white;
+            color: $color;
+            margin: 0px 10px;
+            border-radius: 5px;
         }
     }
 }
