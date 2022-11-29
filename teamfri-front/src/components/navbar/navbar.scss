@@ -1,0 +1,52 @@
+$color: #353A40;
+
+.side{
+    background-color: $color;
+    color: rgb(255, 255, 255);
+    height: 100vh;
+    width: 300px;
+    display: grid;
+    grid-template-areas:
+     'e e'
+     'nav nav'
+     'empty empty'
+     ;
+
+    ul{
+        box-sizing: border-box;
+        grid-area: nav;
+        padding-left: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+
+        li{
+            list-style: none;
+            padding: 10px;
+            transition: all 500ms;
+            display: grid;
+            grid-template-areas: 'icon p empy';
+            border-radius: 5px;
+            margin: 0px 5px;
+            font-size: 1.2rem;
+
+            .icon{
+                grid-area: icon;
+                font-size: 72px;
+                color: rgb(0, 0, 0);
+            }
+
+            Link{
+                grid-area: p;
+                margin: 0;
+            }
+
+            &:hover{
+                background-color: white;
+                color: $color;
+            }
+        }
+    }
+}
