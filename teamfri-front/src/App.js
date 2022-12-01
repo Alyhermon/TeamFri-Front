@@ -1,7 +1,7 @@
 import './app.scss';
 import NavBar from './components/navbar/navbar';
 import DashBoard from './components/dashboard/dashboard';
-import { Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Empleados from './pages/empleados';
 import Vacaciones from './pages/vacaciones';
 import Nominas from './pages/nominas';
