@@ -2,9 +2,9 @@ import './app.scss';
 import NavBar from './components/navbar/navbar';
 import DashBoard from './components/dashboard/dashboard';
 import { Routes, Route } from 'react-router-dom';
-import Empleados from './pages/empleados';
-import Vacaciones from './pages/vacaciones';
-import Nominas from './pages/nominas';
+import Empleados from './pages/empleados.page/empleados';
+import Vacaciones from './pages/vacaciones.page/vacaciones';
+import Nominas from './pages/nominas.page/nominas';
 
 function App() {
   return (
