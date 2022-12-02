@@ -5,6 +5,15 @@ body {
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  &::-webkit-scrollbar{
+      width: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb{
+      background-color: #a4a4a4;
+      border-radius: 5px;
+  }
 }
 
 code {
