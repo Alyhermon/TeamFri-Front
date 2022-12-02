@@ -25,7 +25,7 @@ function DashBoard() {
           </div>
         </div>
       </div>
-
+      <br/>
       <h3>Ultimos Empleados</h3>
       <ul>
         <li><p>Juan Perez</p></li>
