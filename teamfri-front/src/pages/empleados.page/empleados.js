@@ -71,6 +71,7 @@ class empleados extends React.Component{
           <h1>Empleados</h1>
           <div className='Principal'>
             <div className='Secundario'>
+              <input type="text" className="form-control" placeholder='filtrar...' aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" />
               <Button color='success' onClick={this.abrirModal}>Nuevo</Button>
             </div>
           </div>
