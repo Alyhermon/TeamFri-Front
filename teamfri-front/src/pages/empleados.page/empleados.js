@@ -68,9 +68,6 @@ class empleados extends React.Component{
 
       </Modal>
 
-
-
-
       <div>
       <table className="table table-dark td" id='td'>
         <thead>
