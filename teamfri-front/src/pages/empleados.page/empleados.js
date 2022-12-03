@@ -48,9 +48,12 @@ class empleados extends React.Component{
       </Modal>
 
       <div className='empleadostb'>
-        <div className='Principal'>
-          <div className='Secundario'>
-            <Button color='success' onClick={this.abrirModal}>Nuevo</Button>
+        <div className='header'>
+          <h1>Empleados</h1>
+          <div className='Principal'>
+            <div className='Secundario'>
+              <Button color='success' onClick={this.abrirModal}>Nuevo</Button>
+            </div>
           </div>
         </div>
         <table className="table table-dark td" id='td'>

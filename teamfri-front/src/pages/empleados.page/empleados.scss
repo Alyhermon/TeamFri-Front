@@ -4,6 +4,12 @@
     flex-direction: column;
     gap: 10px;
 
+    .header{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
     #td{
         overflow-x: scroll;
         overflow-y: scroll;
