@@ -104,7 +104,7 @@ class empleados extends React.Component{
           </tbody>
         </table>
       </div>
-
+      
       </>
     )
   }
