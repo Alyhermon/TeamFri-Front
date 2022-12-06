@@ -4,12 +4,12 @@ import axios from 'axios';
 import {Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Input, Label} from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 
-const url= ' https://localhost:44356/api/empleado';
+const url= 'https://localhost:44356/api/empleado/';
 
 class empleados extends React.Component{
 
   state={
-    abierto: false,
+    modalInsertar: false,
     data:[],
     form:{ 
       Cedula: '',
@@ -26,23 +26,19 @@ class empleados extends React.Component{
 
   //Peticion Get
   peticionGet=()=>{
-    axios.get(url).then (respon=> {
+    axios.get(url).then(respon=> {
       this.setState({data: respon.data});
     }).catch(error=>{
       console.log(error.message);
     })
   }
 
-  componentDidMount(){
-    this.peticionGet();
-  }
+
 
   //Metodo Post
-
   peticionPost=async()=>{
-    delete this.state.form.id 
    await axios.post(url, this.state.form).then(respon=>{
-      this.abrirModal();
+      this.modalInsertar();
       this.peticionGet();
     }).catch(error=>{
       console.log(error.message);
@@ -61,10 +57,15 @@ class empleados extends React.Component{
     console.log(this.state.form);
   }
 
+
   //Modal
   
-  abrirModal=()=>{
-    this.setState({abierto: !this.state.abierto});
+  modalInsertar=()=>{
+    this.setState({modalInsertar: !this.state.modalInsertar});
+  }
+
+  componentDidMount(){
+    this.peticionGet();
   }
 
   render(){
@@ -74,7 +75,7 @@ class empleados extends React.Component{
       <>
 
       <div className  ="Modal">
-      <Modal isOpen={this.state.abierto}>
+      <Modal isOpen={this.state.modalInsertar} >
         <ModalHeader>
           <h4>Formulario</h4>
         </ModalHeader>
@@ -114,7 +115,7 @@ class empleados extends React.Component{
 
           <ModalFooter>
             <Button color='primary' onClick={()=> this.peticionPost()}>Agregar</Button>
-            <Button color='secondary' onClick={()=> this.abrirModal()}>Cerrar</Button>
+            <Button color='secondary' onClick={()=> this.modalInsertar()}>Cerrar</Button>
           </ModalFooter>
 
       </Modal>
@@ -130,7 +131,7 @@ class empleados extends React.Component{
           <h1>Empleados</h1>
           <div className='Principal'>
             <div className='Secundario'>
-              <Button color='success' onClick={this.abrirModal}>Nuevo</Button>
+              <Button color='success' onClick={()=> this.modalInsertar()}>Nuevo</Button>
             </div>
           </div>
         </div>
