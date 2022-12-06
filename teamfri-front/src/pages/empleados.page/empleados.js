@@ -8,7 +8,7 @@ const url= 'https://localhost:7116/api/User';
 
 class empleados extends React.Component{
 
-  state={
+  state = {
     abierto: false,
     data:[],
     form:{ 
@@ -21,11 +21,12 @@ class empleados extends React.Component{
       HorarioTrabajo: '',
       Telefono: '', 
       correo: ''
-    }
+    },
+    message: ''
   }
 
   //Peticion Get
-  peticionGet=()=>{
+  peticionGet = () => {
     axios.get(url).then (respon=> {
       this.setState({data: respon.data});
     }).catch(error=>{
@@ -39,7 +40,7 @@ class empleados extends React.Component{
 
   //Metodo Post
 
-  peticionPost=async()=>{
+  peticionPost = async() =>{
     delete this.state.form.id 
    await axios.post(url, this.state.form).then(respon=>{
       this.abrirModal();
@@ -50,7 +51,7 @@ class empleados extends React.Component{
   }
 
 
-  handleChange=async e => {
+  handleChange = async e => {
     e.persist();
     await this.setState({
       form:{
@@ -63,7 +64,7 @@ class empleados extends React.Component{
 
   //Modal
   
-  abrirModal=()=>{
+  abrirModal = () =>{
     this.setState({abierto: !this.state.abierto});
   }
 
@@ -130,7 +131,6 @@ class empleados extends React.Component{
         </div>
 
         <table className="table table-dark td" id='td'>
-
           <thead>
             <tr>
               <th className="table-active" scope="col">ID</th>
@@ -169,7 +169,8 @@ class empleados extends React.Component{
                   <td><Button color='danger'>Editar</Button></td>
                 </tr>
               )
-            })}
+            })
+            }
           </tbody>
         </table>
       </div>
