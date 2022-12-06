@@ -1,6 +1,14 @@
 # TeamFri-Front
 
 ### Dependencias a instalar
+
+### Para instalar el paquete node_modules
+
+### node modules
+```
+npm install
+```
+
 ##### react-router-dom
 ```
 npm install react-router-dom
