@@ -36,5 +36,15 @@
       "correo": "rewrfrefgrege4",
       "id": "o9HQ_Gj"
     }
+  ],
+  "vacaciones":[
+    {
+        "id": 0,
+        "deleted": true,
+        "userId": 0,
+        "startDate": "25-10-2022",
+        "endDate": "30-10-2022",
+        "reason": "idk"
+    }
   ]
 }
