@@ -4,7 +4,8 @@ import axios from 'axios';
 import {Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Input, Label} from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 
-const url= 'https://localhost:44356/api/empleado/';
+// const url= 'https://localhost:44356/api/empleado/';
+const url = 'http://localhost:3500/empleados';
 
 class empleados extends React.Component{
 
@@ -33,8 +34,6 @@ class empleados extends React.Component{
     })
   }
 
-
-
   //Metodo Post
   peticionPost=async()=>{
    await axios.post(url, this.state.form).then(respon=>{
@@ -44,7 +43,6 @@ class empleados extends React.Component{
       console.log(error.message);
     })
   }
-
 
   handleChange=async e => {
     e.persist();
@@ -57,9 +55,7 @@ class empleados extends React.Component{
     console.log(this.state.form);
   }
 
-
   //Modal
-  
   modalInsertar=()=>{
     this.setState({modalInsertar: !this.state.modalInsertar});
   }
@@ -82,7 +78,7 @@ class empleados extends React.Component{
 
           <ModalBody>
             <FormGroup>
-            <Label for='Cedula'>Cedula</Label>
+              <Label for='Cedula'>Cedula</Label>
               <Input type='text' name='Cedula' id='Cedula' onChange={this.handleChange} value={form.Cedula}></Input>
 
               <Label for='Nombre'>Nombre</Label>
@@ -108,8 +104,6 @@ class empleados extends React.Component{
 
               <Label for='Correo'>Correo Electronico</Label>
               <Input type='text' name='correo' id='Correo' onChange={this.handleChange} value={form.correo}></Input>
-
-
             </FormGroup>
           </ModalBody>
 
@@ -119,14 +113,10 @@ class empleados extends React.Component{
           </ModalFooter>
 
       </Modal>
-
-
-
-
-      
       </div>
 
       <div className='empleadostb'>
+
         <div className='header'>
           <h1>Empleados</h1>
           <div className='Principal'>
@@ -135,10 +125,10 @@ class empleados extends React.Component{
             </div>
           </div>
         </div>
+
         <table className="table table-dark td" id='td'>
           <thead>
             <tr>
-              <th className="table-active" scope="col">ID</th>
               <th scope="col">Cedula</th>
               <th scope="col">Nombres</th>
               <th scope="col">Apellido</th>
@@ -157,22 +147,18 @@ class empleados extends React.Component{
             {this.state.data.map(empleados=> {
               return(
                 <tr>
-                <td>{empleados.Id}</td>
-                <td>{empleados.Cedula}</td>
-                <td>{empleados.Nombre}</td>
-                <td>{empleados.Apellido}</td>
-                <td>{empleados.fechaNacimiento}</td>
-                <td>{empleados.Cargo}</td>
-                <td>{empleados.Departamento}</td>
-                <td>{empleados.HorarioTrabajo}</td>
-                <td>{empleados.Telefono}</td>
-                <td>{empleados.correo}</td>
-                <td>
-                  <Button color='success'>Editar</Button>
-                  </td>
-                  <td>
-                  <Button color='danger'>Editar</Button>
-                </td>
+                  <td>{empleados.Id}</td>
+                  <td>{empleados.Cedula}</td>
+                  <td>{empleados.Nombre}</td>
+                  <td>{empleados.Apellido}</td>
+                  <td>{empleados.fechaNacimiento}</td>
+                  <td>{empleados.Cargo}</td>
+                  <td>{empleados.Departamento}</td>
+                  <td>{empleados.HorarioTrabajo}</td>
+                  <td>{empleados.Telefono}</td>
+                  <td>{empleados.correo}</td>
+                  <td><Button color='success'>Editar</Button></td>
+                  <td><Button color='danger'>Editar</Button></td>
                 </tr>
               )
             })}

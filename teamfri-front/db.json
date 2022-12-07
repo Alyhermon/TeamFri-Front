@@ -1,0 +1,40 @@
+{
+  "empleados": [
+    {
+      "id": "1",
+      "Cedula": "402-393393",
+      "Nombre": "Laura",
+      "Apellido": "Peguero",
+      "Fecha": "vwerf",
+      "Cargo": "ewfef",
+      "Departamento": "wefef",
+      "HorarioTrabajo": "wefew",
+      "Telefono": "ewf",
+      "correo": "wefwefe"
+    },
+    {
+      "Cedula": "4frwfrwe",
+      "Nombre": "w3r3r",
+      "Apellido": "r232r32r",
+      "Fecha": "32r23r23r",
+      "Cargo": "ffewfw4",
+      "Departamento": "fef34",
+      "HorarioTrabajo": "4efewf43",
+      "Telefono": "wfwfr",
+      "correo": "fewf4f4",
+      "id": "SFSLhnq"
+    },
+    {
+      "Cedula": "402-442",
+      "Nombre": "Manuela",
+      "Apellido": "Rasputia",
+      "Fecha": "2023",
+      "Cargo": "presidenta",
+      "Departamento": "desarrollo",
+      "HorarioTrabajo": "16hr",
+      "Telefono": "45435334",
+      "correo": "rewrfrefgrege4",
+      "id": "o9HQ_Gj"
+    }
+  ]
+}
