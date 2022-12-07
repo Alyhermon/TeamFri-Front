@@ -13,7 +13,7 @@
       "correo": "person@email.com"
     },
     {
-      "id": "2",
+      "id": 2,
       "Cedula": "402-434343-8",
       "Nombre": "Manuel",
       "Apellido": "No c",
@@ -25,7 +25,7 @@
       "correo": "person@email.com"
     },
     {
-      "id": "3",
+      "id": 3,
       "Cedula": "402-434343-8",
       "Nombre": "Cristian",
       "Apellido": "Tejeda",
@@ -37,52 +37,28 @@
       "correo": "person@email.com"
     },
     {
-      "Cedula": "",
-      "Nombre": "",
-      "Apellido": "",
-      "Fecha": "",
-      "Cargo": "",
-      "Departamento": "",
-      "HorarioTrabajo": "",
-      "Telefono": "",
-      "correo": "",
-      "id": "JHkxxlq"
+      "Cedula": "23r",
+      "Nombre": "maria",
+      "Apellido": "egergr",
+      "Fecha": "egrg",
+      "Cargo": "regreg",
+      "Departamento": "regre",
+      "HorarioTrabajo": "gregeg",
+      "Telefono": "regerg",
+      "correo": "rgerg",
+      "id": 8
     },
     {
-      "Cedula": "",
-      "Nombre": "",
-      "Apellido": "",
-      "Fecha": "",
-      "Cargo": "",
-      "Departamento": "",
-      "HorarioTrabajo": "",
-      "Telefono": "",
-      "correo": "",
-      "id": "Yvsjjxi"
-    },
-    {
-      "Cedula": "",
-      "Nombre": "",
-      "Apellido": "",
-      "Fecha": "",
-      "Cargo": "",
-      "Departamento": "",
-      "HorarioTrabajo": "",
-      "Telefono": "",
-      "correo": "",
-      "id": "RuI-6kC"
-    },
-    {
-      "Cedula": "",
-      "Nombre": "",
-      "Apellido": "",
-      "Fecha": "",
-      "Cargo": "",
-      "Departamento": "",
-      "HorarioTrabajo": "",
-      "Telefono": "",
-      "correo": "",
-      "id": "hBLAtvd"
+      "Cedula": "tgre",
+      "Nombre": "regfe",
+      "Apellido": "refre",
+      "Fecha": "refer",
+      "Cargo": "erfre",
+      "Departamento": "rferf",
+      "HorarioTrabajo": "erfrfre",
+      "Telefono": "fefefre",
+      "correo": "refrefre",
+      "id": 9
     }
   ]
 }

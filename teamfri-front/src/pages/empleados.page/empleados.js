@@ -7,10 +7,13 @@ import {Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Input, La
 import 'bootstrap/dist/css/bootstrap.css';
 
 // const url= 'https://localhost:7116/api/User';
-const urlGet = 'https://localhost:44356/api/empleado';
-const urlPost = ' https://localhost:44356/api/empleado/';
-const urlPut = ' http://localhost:58683/api/empleado?id=';
-const urlDelete = 'https://localhost:44356/api/empleado?id=';
+// const urlGet = 'https://localhost:44356/api/empleado';
+const urlGet = 'http://localhost:3500/empleados';
+const urlPost = 'http://localhost:3500/empleados';
+// const urlPut = ' http://localhost:58683/api/empleado?id=';
+// const urlDelete = 'https://localhost:44356/api/empleado?id=';
+const urlPut = 'http://localhost:3500/empleados?id=';
+const urlDelete = 'http://localhost:3500/empleados/';
 
 class empleados extends React.Component{
 
@@ -18,7 +21,7 @@ class empleados extends React.Component{
     abrirModal: false,
     modalEliminar: false,
     data:[],
-    form:{ 
+    form:{
       id: '',
       Cedula: '',
       Nombre: '',
@@ -51,8 +54,7 @@ class empleados extends React.Component{
     })
   }
 
-  //Metodo Eliminar
-
+  //Metodo actualizar
   peticionPut=()=>{
     axios.put(urlPut+this.state.form.id, this.state.form).then(response=>{
       this.abrirModal();
@@ -61,11 +63,11 @@ class empleados extends React.Component{
   }
 
   //Metodo Eliminar
-  
   peticionDelete=()=>{
     axios.delete(urlDelete + this.state.form.id).then(response=>{
       this.setState({modalEliminar: false});
       this.peticionGet();
+      console.log(urlDelete);
     })
   }
 
@@ -138,7 +140,7 @@ class empleados extends React.Component{
 <table className="table table-dark td" id='td'>
   <thead>
     <tr>
-    <th scope="col">Id</th>
+      <th scope="col">Id</th>
       <th scope="col">Cedula</th>
       <th scope="col">Nombre</th>
       <th scope="col">Apellido</th>
@@ -157,7 +159,7 @@ class empleados extends React.Component{
     {this.state.data.map((empleados)=> {
       return(
         <tr>
-          <td>{empleados.Id}</td>
+          <td>{empleados.id}</td>
           <td>{empleados.Cedula}</td>
           <td>{empleados.Nombre}</td>
           <td>{empleados.Apellido}</td>
@@ -201,9 +203,6 @@ class empleados extends React.Component{
 
           <ModalBody>
               <FormGroup>
-
-              <Label for='Cedula'>Id</Label>
-                <Input type='text' name='id'   onChange={this.handleChange} value={form ?  form.id: ''}></Input>
 
                 <Label for='Cedula'>Cedula</Label>
                 <Input type='text' name='Cedula'   onChange={this.handleChange} value={form ?  form.Cedula: ''}></Input>
