@@ -3,14 +3,14 @@ import './empleados.scss';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
-import {Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Input, Label} from 'reactstrap';
+import {Button, Modal, ModalBody, ModalFooter, FormGroup, Input, Label} from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 
 // const url= 'https://localhost:7116/api/User';
-const urlGet = 'https://localhost:44356/api/empleado';
-const urlPost = ' https://localhost:44356/api/empleado/';
-const urlPut = ' http://localhost:58683/api/empleado?id=';
-const urlDelete = 'https://localhost:44356/api/empleado?id=';
+const urlGet = 'https://localhost:44356/api/empleado/';
+const urlPost = 'https://localhost:44356/api/empleado/';
+const urlPut = 'https://localhost:44356/api/empleado?id=';
+const urlDelete = ' https://localhost:44356/api/empleado?id=';
 
 class empleados extends React.Component{
 
@@ -42,7 +42,7 @@ class empleados extends React.Component{
 
   //Metodo Agregar
   peticionPost = async() =>{
-    delete this.state.form.id;
+    delete this.state.form.Id;
     await axios.post(urlPost, this.state.form).then(Response=>{
       this.abrirModal();
       this.peticionGet();
@@ -63,7 +63,7 @@ class empleados extends React.Component{
   //Metodo Eliminar
   
   peticionDelete=()=>{
-    axios.delete(urlDelete + this.state.form.id).then(response=>{
+    axios.delete(urlDelete  + this.state.form.id).then(response=>{
       this.setState({modalEliminar: false});
       this.peticionGet();
     })
@@ -78,7 +78,7 @@ class empleados extends React.Component{
       this.setState({
         tipoModal: 'actualizar',
         form: {
-          Id: empleados.id,
+          id: empleados.Id,
           Cedula: empleados.Cedula,
           Nombre: empleados.Nombre,
           Apellido: empleados.Apellido,
@@ -109,7 +109,7 @@ class empleados extends React.Component{
 
 
 
-  /**********************************HTML******************************************** */
+  /**********************************HTML************************************************* */
 
   render(){
     const {form} = this.state;
@@ -202,8 +202,8 @@ class empleados extends React.Component{
           <ModalBody>
               <FormGroup>
 
-              <Label for='Cedula'>Id</Label>
-                <Input type='text' name='id'   onChange={this.handleChange} value={form ?  form.id: ''}></Input>
+              <Label htmlFor="id">ID</Label>
+              <Input className="form-control" type="text" name="Id" id="id" readOnly onChange={this.handleChange} value={form?form.id: this.state.data.length+1}/>
 
                 <Label for='Cedula'>Cedula</Label>
                 <Input type='text' name='Cedula'   onChange={this.handleChange} value={form ?  form.Cedula: ''}></Input>
@@ -215,7 +215,7 @@ class empleados extends React.Component{
                 <Input type='text' name='Apellido' id='Apellido' onChange={this.handleChange} value={form ? form.Apellido: ''}></Input>
 
                 <Label for='Fecha'>Fecha de Nacimiento</Label>
-                <Input type='text' name='Fecha' id='Fecha' onChange={this.handleChange} value={form ?  form.Fecha: ''}></Input>
+                <Input type='text' name='Fecha' id='Fecha' onChange={this.handleChange} value={form ?  form.fechaNacimiento: ''}></Input>
 
                 <Label for='Cargo'>Cargo</Label>
                 <Input type='text' name='Cargo' id='Cargo' onChange={this.handleChange} value={form ?  form.Cargo: ''}></Input>
