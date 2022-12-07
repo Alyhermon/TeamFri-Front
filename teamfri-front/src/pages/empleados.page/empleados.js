@@ -107,8 +107,6 @@ class empleados extends React.Component{
     this.peticionGet();
   }
 
-
-
   /**********************************HTML************************************************* */
 
   render(){
