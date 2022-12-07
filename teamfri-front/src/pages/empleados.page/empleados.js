@@ -109,8 +109,6 @@ class empleados extends React.Component{
     this.peticionGet();
   }
 
-
-
   /**********************************HTML******************************************** */
 
   render(){
@@ -119,84 +117,84 @@ class empleados extends React.Component{
     return(
       <>
 
-<div className='empleadostb'>
+      <div className='empleadostb'>
 
-<div className='header'>
-  <h1>Empleados</h1>
-  <div className='Principal'>
-    <div className='Secundario'>
-      <input type="text" className="form-control" placeholder='filtrar...' aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" />
-      <button className='btn btn-success' onClick={() => { 
-        this.setState({ form: null, tipoModal: "insertar" });
-        this.abrirModal();
-        }}
-        >Nuevo</button>
-        <br>
-        </br>
-    </div>
-  </div>
-</div>
-
-<table className="table table-dark td" id='td'>
-  <thead>
-    <tr>
-      <th scope="col">Id</th>
-      <th scope="col">Cedula</th>
-      <th scope="col">Nombre</th>
-      <th scope="col">Apellido</th>
-      <th scope="col">Cargo</th>
-      <th scope="col">Fecha de Nacimiento</th>
-      <th scope="col">Departamento</th>
-      <th scope="col">Horario de Trabajo</th>
-      <th scope="col">Telefono</th> 
-      <th scope="col">Correo</th>
-      <th scope="col">Opciones</th>
-
-    </tr>
-  </thead>
-
-  <tbody>
-    {this.state.data.map((empleados)=> {
-      return(
-        <tr>
-          <td>{empleados.id}</td>
-          <td>{empleados.Cedula}</td>
-          <td>{empleados.Nombre}</td>
-          <td>{empleados.Apellido}</td>
-          <td>{empleados.Cargo}</td>
-          <td>{empleados.fechaNacimiento}</td>
-          <td>{empleados.Departamento}</td>
-          <td>{empleados.HorarioTrabajo}</td>
-          <td>{empleados.Telefono}</td>
-          <td>{empleados.correo}</td>
-          <td>
-            <button
-              className="btn btn-primary"
-              onClick={() => {
-                this.seleccionarProducto(empleados);
-                this.abrirModal();
+      <div className='header'>
+        <h1>Empleados</h1>
+        <div className='Principal'>
+          <div className='Secundario'>
+            <input type="text" className="form-control" placeholder='filtrar...' aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" />
+            <button className='btn btn-success' onClick={() => { 
+              this.setState({ form: null, tipoModal: "insertar" });
+              this.abrirModal();
               }}
-            >
-              <FontAwesomeIcon icon={faEdit} />
-            </button>
-            {"   "}
-            <button
-              className="btn btn-danger"
-              onClick={() => {
-                this.seleccionarProducto(empleados);
-                this.setState({ modalEliminar: true });
-              }}
-            >
-              <FontAwesomeIcon icon={faTrashAlt} />
-            </button>
-          </td>
-        </tr>
-      )
-    })
-    }
-  </tbody>
-</table>
-</div>
+              >Nuevo</button>
+              <br>
+              </br>
+          </div>
+        </div>
+      </div>
+
+      <table className="table table-dark td" id='td'>
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Cedula</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Cargo</th>
+            <th scope="col">Fecha de Nacimiento</th>
+            <th scope="col">Departamento</th>
+            <th scope="col">Horario de Trabajo</th>
+            <th scope="col">Telefono</th> 
+            <th scope="col">Correo</th>
+            <th scope="col">Opciones</th>
+
+          </tr>
+        </thead>
+
+        <tbody>
+          {this.state.data.map((empleados)=> {
+            return(
+              <tr>
+                <td>{empleados.id}</td>
+                <td>{empleados.Cedula}</td>
+                <td>{empleados.Nombre}</td>
+                <td>{empleados.Apellido}</td>
+                <td>{empleados.Cargo}</td>
+                <td>{empleados.fechaNacimiento}</td>
+                <td>{empleados.Departamento}</td>
+                <td>{empleados.HorarioTrabajo}</td>
+                <td>{empleados.Telefono}</td>
+                <td>{empleados.correo}</td>
+                <td>
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => {
+                      this.seleccionarProducto(empleados);
+                      this.abrirModal();
+                    }}
+                  >
+                    <FontAwesomeIcon icon={faEdit} />
+                  </button>
+                  {"   "}
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => {
+                      this.seleccionarProducto(empleados);
+                      this.setState({ modalEliminar: true });
+                    }}
+                  >
+                    <FontAwesomeIcon icon={faTrashAlt} />
+                  </button>
+                </td>
+              </tr>
+            )
+          })
+          }
+        </tbody>
+      </table>
+      </div>
       
       <div className="Modal">
         <Modal isOpen={this.state.abrirModal}>
