@@ -17,3 +17,11 @@ npm install bootstrap
 ```
 npm install reactstrap
 ```
+#### free-solid-svg-icons
+```
+npm install @fortawesome/free-solid-svg-icons
+```
+### react-fontawesome
+```
+npm install @fortawesome/react-fontawesome
+```
