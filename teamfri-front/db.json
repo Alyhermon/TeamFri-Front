@@ -2,49 +2,87 @@
   "empleados": [
     {
       "id": "1",
-      "Cedula": "402-393393",
-      "Nombre": "Laura",
-      "Apellido": "Peguero",
-      "Fecha": "vwerf",
-      "Cargo": "ewfef",
-      "Departamento": "wefef",
-      "HorarioTrabajo": "wefew",
-      "Telefono": "ewf",
-      "correo": "wefwefe"
+      "Cedula": "402-434343-8",
+      "Nombre": "Alina",
+      "Apellido": "Hermon",
+      "Fecha": "25-12-2000",
+      "Cargo": "Desarrolladora",
+      "Departamento": "Desarrollo",
+      "HorarioTrabajo": "6 a 10",
+      "Telefono": "856-399-9493",
+      "correo": "person@email.com"
     },
     {
-      "Cedula": "4frwfrwe",
-      "Nombre": "w3r3r",
-      "Apellido": "r232r32r",
-      "Fecha": "32r23r23r",
-      "Cargo": "ffewfw4",
-      "Departamento": "fef34",
-      "HorarioTrabajo": "4efewf43",
-      "Telefono": "wfwfr",
-      "correo": "fewf4f4",
-      "id": "SFSLhnq"
+      "id": "2",
+      "Cedula": "402-434343-8",
+      "Nombre": "Manuel",
+      "Apellido": "No c",
+      "Fecha": "25-12-2000",
+      "Cargo": "Desarrollador",
+      "Departamento": "Desarrollo",
+      "HorarioTrabajo": "6 a 10",
+      "Telefono": "856-399-9493",
+      "correo": "person@email.com"
     },
     {
-      "Cedula": "402-442",
-      "Nombre": "Manuela",
-      "Apellido": "Rasputia",
-      "Fecha": "2023",
-      "Cargo": "presidenta",
-      "Departamento": "desarrollo",
-      "HorarioTrabajo": "16hr",
-      "Telefono": "45435334",
-      "correo": "rewrfrefgrege4",
-      "id": "o9HQ_Gj"
-    }
-  ],
-  "vacaciones":[
+      "id": "3",
+      "Cedula": "402-434343-8",
+      "Nombre": "Cristian",
+      "Apellido": "Tejeda",
+      "Fecha": "25-12-2000",
+      "Cargo": "Desarrollador",
+      "Departamento": "Desarrollo",
+      "HorarioTrabajo": "6 a 10",
+      "Telefono": "856-399-9493",
+      "correo": "person@email.com"
+    },
     {
-        "id": 0,
-        "deleted": true,
-        "userId": 0,
-        "startDate": "25-10-2022",
-        "endDate": "30-10-2022",
-        "reason": "idk"
+      "Cedula": "",
+      "Nombre": "",
+      "Apellido": "",
+      "Fecha": "",
+      "Cargo": "",
+      "Departamento": "",
+      "HorarioTrabajo": "",
+      "Telefono": "",
+      "correo": "",
+      "id": "JHkxxlq"
+    },
+    {
+      "Cedula": "",
+      "Nombre": "",
+      "Apellido": "",
+      "Fecha": "",
+      "Cargo": "",
+      "Departamento": "",
+      "HorarioTrabajo": "",
+      "Telefono": "",
+      "correo": "",
+      "id": "Yvsjjxi"
+    },
+    {
+      "Cedula": "",
+      "Nombre": "",
+      "Apellido": "",
+      "Fecha": "",
+      "Cargo": "",
+      "Departamento": "",
+      "HorarioTrabajo": "",
+      "Telefono": "",
+      "correo": "",
+      "id": "RuI-6kC"
+    },
+    {
+      "Cedula": "",
+      "Nombre": "",
+      "Apellido": "",
+      "Fecha": "",
+      "Cargo": "",
+      "Departamento": "",
+      "HorarioTrabajo": "",
+      "Telefono": "",
+      "correo": "",
+      "id": "hBLAtvd"
     }
   ]
 }
