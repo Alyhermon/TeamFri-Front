@@ -12,10 +12,16 @@ class empleados extends React.Component{
   state={
     modalInsertar: false,
     data:[],
-    form:{ 
-      userId: '',
-      id: '',
-      title: ''
+    form:{
+      Cedula: "",
+      Nombre: "",
+      Apellido: "",
+      Fecha: "",
+      Cargo: "",
+      Departamento: "",
+      HorarioTrabajo: "",
+      Telefono: "",
+      correo: ""
     }
   }
 
@@ -63,12 +69,6 @@ class empleados extends React.Component{
 
     return(
       <>
-      
-      <div className="Modal">
-        <Modal isOpen={this.state.abierto}>
-          <ModalHeader>
-            <h4>Formulario</h4>
-          </ModalHeader>
 
       <div className  ="Modal">
       <Modal isOpen={this.state.modalInsertar} >
@@ -121,6 +121,7 @@ class empleados extends React.Component{
           <h1>Empleados</h1>
           <div className='Principal'>
             <div className='Secundario'>
+              <input class="form-control" type="text" placeholder="Filtrar..." aria-label="default input example"/>
               <Button color='success' onClick={()=> this.modalInsertar()}>Nuevo</Button>
             </div>
           </div>
@@ -129,10 +130,7 @@ class empleados extends React.Component{
         <table className="table table-dark td" id='td'>
           <thead>
             <tr>
-              <th scope="col">Cedula</th>
-              <th scope="col">Nombre</th>
-              <th scope="col">Apellido</th>
-              {/* <th scope="col">Correo</th>
+              <th scope="col">Correo</th>
               <th scope="col">Cargo</th>
               <th scope="col">Contraseña</th>
               <th scope="col">Cargo</th>
@@ -140,7 +138,7 @@ class empleados extends React.Component{
               <th scope="col">Numero telefonico</th> 
               <th scope="col">Fecha de Nacimiento</th>
               <th scope="col">Vacaciones</th>
-              <th scope="col">Sueldo</th> */}
+              <th scope="col">Sueldo</th>
             </tr>
           </thead>
 
@@ -164,11 +162,10 @@ class empleados extends React.Component{
                 //   <td><Button color='danger'>Eliminar</Button></td>
                 // </tr>
                 <tr>
-                  <td>{empleados.Id}</td>
                   <td>{empleados.Cedula}</td>
                   <td>{empleados.Nombre}</td>
                   <td>{empleados.Apellido}</td>
-                  <td>{empleados.fechaNacimiento}</td>
+                  <td>{empleados.Fecha}</td>
                   <td>{empleados.Cargo}</td>
                   <td>{empleados.Departamento}</td>
                   <td>{empleados.HorarioTrabajo}</td>
