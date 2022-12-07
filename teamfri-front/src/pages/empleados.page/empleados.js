@@ -4,13 +4,13 @@ import axios from 'axios';
 import {Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Input, Label} from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 
-// const url= 'https://localhost:7116/api/User';
-const url = 'https://jsonplaceholder.typicode.com/users/1/albums';
+// const url= 'https://localhost:44356/api/empleado/';
+const url = 'http://localhost:3500/empleados';
 
 class empleados extends React.Component{
 
-  state = {
-    abierto: false,
+  state={
+    modalInsertar: false,
     data:[],
     form:{ 
       userId: '',
@@ -20,29 +20,25 @@ class empleados extends React.Component{
   }
 
   //Peticion Get
-  peticionGet = () => {
-    axios.get(url).then (respon=> {
+  peticionGet=()=>{
+    axios.get(url).then(respon=> {
       this.setState({data: respon.data});
     }).catch(error=>{
       console.log(error.message);
     })
   }
 
-  componentDidMount(){
-    this.peticionGet();
-  }
-
   //Metodo Post
-  peticionPost = async() =>{
-    await axios.post(url, this.state.form).then(respon=>{
-      this.abrirModal();
+  peticionPost=async()=>{
+   await axios.post(url, this.state.form).then(respon=>{
+      this.modalInsertar();
       this.peticionGet();
     }).catch(error=>{
       console.log(error.message);
     })
   }
 
-  handleChange = async e => {
+  handleChange=async e => {
     e.persist();
     await this.setState({
       form:{
@@ -54,8 +50,12 @@ class empleados extends React.Component{
   }
 
   //Modal
-  abrirModal = () =>{
-    this.setState({abierto: !this.state.abierto});
+  modalInsertar=()=>{
+    this.setState({modalInsertar: !this.state.modalInsertar});
+  }
+
+  componentDidMount(){
+    this.peticionGet();
   }
 
   render(){
@@ -70,10 +70,16 @@ class empleados extends React.Component{
             <h4>Formulario</h4>
           </ModalHeader>
 
+      <div className  ="Modal">
+      <Modal isOpen={this.state.modalInsertar} >
+        <ModalHeader>
+          <h4>Formulario</h4>
+        </ModalHeader>
+
           <ModalBody>
-              <FormGroup>
-                {/* <Label for='Cedula'>Cedula</Label>
-                <Input type='text' name='Cedula' id='Cedula' onChange={this.handleChange} value={form.Cedula}></Input>
+            <FormGroup>
+              <Label for='Cedula'>Cedula</Label>
+              <Input type='text' name='Cedula' id='Cedula' onChange={this.handleChange} value={form.Cedula}></Input>
 
                 <Label for='Nombre'>Nombre</Label>
                 <Input type='text' name='Nombre' id='Nombre' onChange={this.handleChange} value={form.Nombre}></Input>
@@ -96,25 +102,17 @@ class empleados extends React.Component{
                 <Label for='Telefono'>Telefono</Label>
                 <Input type='text' name='Telefono' id='Telefono' onChange={this.handleChange} value={form.Telefono}></Input>
 
-                <Label for='Correo'>Correo Electronico</Label>
-                <Input type='text' name='correo' id='Correo' onChange={this.handleChange} value={form.correo}></Input> */}
-                <Label for='Nombre'>userI</Label>
-                <Input type='text' name='userId' id='userId' onChange={this.handleChange} value={form.userId}></Input>
-
-                <Label for='Nombre'>id</Label>
-                <Input type='text' name='id' id='id' onChange={this.handleChange} value={form.id}></Input>
-
-                <Label for='Nombre'>title</Label>
-                <Input type='text' name='title' id='title' onChange={this.handleChange} value={form.title}></Input>
-              </FormGroup>
+              <Label for='Correo'>Correo Electronico</Label>
+              <Input type='text' name='correo' id='Correo' onChange={this.handleChange} value={form.correo}></Input>
+            </FormGroup>
           </ModalBody>
 
           <ModalFooter>
-            <Button color='primary' onClick={() => this.peticionPost()}>Agregar</Button>
-            <Button color='secondary' onClick={this.abrirModal()}>Cerrar</Button>
+            <Button color='primary' onClick={()=> this.peticionPost()}>Agregar</Button>
+            <Button color='secondary' onClick={()=> this.modalInsertar()}>Cerrar</Button>
           </ModalFooter>
 
-        </Modal>
+      </Modal>
       </div>
 
       <div className='empleadostb'>
@@ -123,8 +121,7 @@ class empleados extends React.Component{
           <h1>Empleados</h1>
           <div className='Principal'>
             <div className='Secundario'>
-              <input type="text" className="form-control" placeholder='filtrar...' aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" />
-              <Button color='success' onClick={this.abrirModal}>Nuevo</Button>
+              <Button color='success' onClick={()=> this.modalInsertar()}>Nuevo</Button>
             </div>
           </div>
         </div>
@@ -167,11 +164,18 @@ class empleados extends React.Component{
                 //   <td><Button color='danger'>Eliminar</Button></td>
                 // </tr>
                 <tr>
-                  <td>{empleados.userId}</td>
-                  <td>{empleados.id}</td>
-                  <td>{empleados.title}</td>
+                  <td>{empleados.Id}</td>
+                  <td>{empleados.Cedula}</td>
+                  <td>{empleados.Nombre}</td>
+                  <td>{empleados.Apellido}</td>
+                  <td>{empleados.fechaNacimiento}</td>
+                  <td>{empleados.Cargo}</td>
+                  <td>{empleados.Departamento}</td>
+                  <td>{empleados.HorarioTrabajo}</td>
+                  <td>{empleados.Telefono}</td>
+                  <td>{empleados.correo}</td>
                   <td><Button color='success'>Editar</Button></td>
-                  <td><Button color='danger'>Eliminar</Button></td>
+                  <td><Button color='danger'>Editar</Button></td>
                 </tr>
               )
             })
