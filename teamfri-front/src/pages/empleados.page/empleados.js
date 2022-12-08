@@ -8,9 +8,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Search from '../../components/search/search';
 import Formulario from '../../components/B-Formulario/formulario';
 
-const urlGet = 'https://localhost:44338/api/User';
-const urlPost = 'https://localhost:44338/api/User';
-const urlPut = 'https://localhost:44338/api/User/id';
+const url = 'https://localhost:44338/api/User';
 const urlDelete = 'https://localhost:44338/api/User/';
 
 class empleados extends React.Component{
@@ -35,7 +33,7 @@ class empleados extends React.Component{
 
   //Peticion Get
   peticionGet =()=> {
-    axios.get(urlGet).then(respon=> {
+    axios.get(url).then(respon=> {
       this.setState({data: respon.data});
     })
   }
@@ -43,7 +41,7 @@ class empleados extends React.Component{
   //Metodo Agregar
   peticionPost = async() =>{
     delete this.state.form.Id;
-    await axios.post(urlPost, this.state.form).then(Response=>{
+    await axios.post(url, this.state.form).then(Response=>{
       this.abrirModal();
       this.peticionGet();
     }).catch(error=>{
@@ -53,7 +51,7 @@ class empleados extends React.Component{
 
   //Metodo Eliminar
   peticionPut=()=>{
-    axios.put(urlDelete+this.state.form.id, this.state.form).then(response=>{
+    axios.put(url+this.state.form.id, this.state.form).then(response=>{
       this.abrirModal();
       this.peticionGet();
     })
@@ -100,6 +98,10 @@ class empleados extends React.Component{
     console.log(this.state.form);
   }
 
+  handleSearch = (search) => {
+    console.log(search);
+  }
+
   componentDidMount(){
     this.peticionGet();
   }
@@ -111,67 +113,65 @@ class empleados extends React.Component{
 
     return(
       <>
+      <div className='empleadostb'>
 
-    <div className='empleadostb'>
-
-    <div className='header'>
-      <h1>Empleados</h1>
-      <div className='Principal'>
-        <div className='Secundario'>
-          <Search handleSearch={this.handleSearch} />
-          <button className='btn btn-success' onClick={() => { this.setState({ form: null, tipoModal: "insertar" }); this.abrirModal();}}>Nuevo</button>
-          <br/>
+      <div className='header'>
+        <h1>Empleados</h1>
+        <div className='Principal'>
+          <div className='Secundario'>
+            <Search handleSearch={this.handleSearch} />
+            <button className='btn btn-success' onClick={() => { this.setState({ form: null, tipoModal: "insertar" }); this.abrirModal();}}>Nuevo</button>
+            <br/>
+          </div>
         </div>
       </div>
-    </div>
 
-    <table className="table table-dark td" id='td'>
-      <thead>
-        <tr>
-        <th scope="col">Id</th>
-          <th scope="col">Cedula</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Apellido</th>
-          <th scope="col">Cargo</th>
-          <th scope="col">Cumpleaños</th>
-          <th scope="col">Departamento</th>
-          <th scope="col">Contacto</th> 
-          <th scope="col">Correo</th>
-          <th scope="col">Opciones</th>
-        </tr>
-      </thead>
+      <table className="table table-dark td" id='td'>
+        <thead>
+          <tr>
+          <th scope="col">Id</th>
+            <th scope="col">Cedula</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Cargo</th>
+            <th scope="col">Cumpleaños</th>
+            <th scope="col">Departamento</th>
+            <th scope="col">Contacto</th> 
+            <th scope="col">Correo</th>
+            <th scope="col">Opciones</th>
+          </tr>
+        </thead>
 
-      <tbody>
-        {this.state.data.map((empleados)=> {
-          return(
-            <tr>
-              <td>{empleados.id}</td>
-              <td>{empleados.identification}</td>
-              <td>{empleados.name}</td>
-              <td>{empleados.lastName}</td>
-              <td>{empleados.charge}</td>
-              <td>{empleados.birthDate}</td>
-              <td>{empleados.department}</td>
-              <td>{empleados.phoneNumber}</td>
-              <td>{empleados.email}</td>
-              <td>
-                <button className="btn btn-primary" onClick={() => {this.seleccionarProducto(empleados); this.abrirModal();}}>
-                  <FontAwesomeIcon icon={faEdit} />
-                </button>
-                <button className="btn btn-primary" >
-                  <FontAwesomeIcon icon={faExclamation} />
-                </button>
-                <button className="btn btn-danger" onClick={() => {this.seleccionarProducto(empleados); this.setState({ modalEliminar: true });}}>
-                  <FontAwesomeIcon icon={faTrashAlt} />
-                </button>
-              </td>
-            </tr>
-          )
-        })
-        }
-      </tbody>
-    </table>
-    </div>
+        <tbody>
+          {this.state.data.map(empleados => {
+            return(
+              <tr>
+                <td>{empleados.id}</td>
+                <td>{empleados.identification}</td>
+                <td>{empleados.name}</td>
+                <td>{empleados.lastName}</td>
+                <td>{empleados.charge}</td>
+                <td>{empleados.birthDate}</td>
+                <td>{empleados.department}</td>
+                <td>{empleados.phoneNumber}</td>
+                <td>{empleados.email}</td>
+                <td>
+                  <button className="btn btn-primary" onClick={() => {this.seleccionarProducto(empleados); this.abrirModal();}}>
+                    <FontAwesomeIcon icon={faEdit} />
+                  </button>
+                  <button className="btn btn-primary" >
+                    <FontAwesomeIcon icon={faExclamation} />
+                  </button>
+                  <button className="btn btn-danger" onClick={() => {this.seleccionarProducto(empleados); this.setState({ modalEliminar: true });}}>
+                    <FontAwesomeIcon icon={faTrashAlt} />
+                  </button>
+                </td>
+              </tr>
+            )
+          })}
+        </tbody>
+      </table>
+      </div>
       
       <div className="Modal">
         <Modal isOpen={this.state.abrirModal}>

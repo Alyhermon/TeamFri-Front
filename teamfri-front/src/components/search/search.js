@@ -1,37 +1,29 @@
 import React, { useState, useEffect } from 'react'
+import './search.scss'
 
-const Search = (props) => {
-    //hooks useState
-    const [ users, setUsers ] = useState([]);
-    const [ search, setSearch ] = useState("");
+class Search extends React.Component {
+    constructor(props){
+        super(props)
 
-    //traer datos de la api
-    // const url= 'https://localhost:7116/api/User';
-    const url = 'http://localhost:3002/empleados';
-
-    const show = async () =>{
-        const response = await fetch(url);
-        const data = await response.json();
+        this.state = {search: ''}
     }
 
-    //filtro
-    const searcher = (e) =>{
-        setSearch(e.target.value);
-        console.log(e.target.value);
+    handleChange = (e) => {
+        this.setState({ search: e.target.value });
     }
-
-    const results = users.filter((dato) => dato.name.toLowerCase().includes(search.toLowerCase()));
-
-    useEffect(() => {
-        show();
-    }, [])
 
     //render
-    return(
+    render() {
+        const { handleSearch } = this.props
+        const { search } = this.state
+
+      return (
         <div className='search'>
-            <input type="text" onChange={searcher} className="form-control" value={search} placeholder='filtrar...' />
+            <input type="text" onChange={() => this.handleChange(this.state.search)} className="form-control" placeholder='filtrar...' />
+            <button onClick={handleSearch}><ion-icon name="search" ></ion-icon></button>
         </div>
-    )
+      )
+    }
 }
 
 export default Search
