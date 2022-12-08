@@ -5,12 +5,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import {Button, Modal, ModalBody, ModalFooter, FormGroup, Input, Label} from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
+import Search from '../../components/search/search';
 
-// const url= 'https://localhost:7116/api/User';
-const urlGet = 'https://localhost:44356/api/empleado/';
-const urlPost = 'https://localhost:44356/api/empleado/';
-const urlPut = 'https://localhost:44356/api/empleado?id=';
-const urlDelete = ' https://localhost:44356/api/empleado?id=';
+const urlGet = 'https://localhost:44338/api/User';
+const urlPost = 'https://localhost:44338/api/User';
+const urlPut = 'https://localhost:44338/api/User/id';
+const urlDelete = 'https://localhost:44338/api/User/';
 
 class empleados extends React.Component{
 
@@ -20,15 +20,14 @@ class empleados extends React.Component{
     data:[],
     form:{ 
       id: '',
-      Cedula: '',
-      Nombre: '',
-      Apellido: '',
-      Fecha: '', 
-      Cargo: '', 
-      Departamento: '', 
-      HorarioTrabajo: '', 
-      Telefono: '', 
-      correo: '',
+      identification: '',
+      name: '',
+      lastname: '',
+      birthDate: '', 
+      charge: '', 
+      department: '', 
+      phoneNumber: '', 
+      email: '',
       tipoModal: ''
     }
   }
@@ -52,18 +51,16 @@ class empleados extends React.Component{
   }
 
   //Metodo Eliminar
-
   peticionPut=()=>{
-    axios.put(urlPut+this.state.form.id, this.state.form).then(response=>{
+    axios.put(urlDelete+this.state.form.id, this.state.form).then(response=>{
       this.abrirModal();
       this.peticionGet();
     })
   }
 
   //Metodo Eliminar
-  
   peticionDelete=()=>{
-    axios.delete(urlDelete  + this.state.form.id).then(response=>{
+    axios.delete(urlDelete + this.state.form.id).then(response=>{
       this.setState({modalEliminar: false});
       this.peticionGet();
     })
@@ -78,16 +75,15 @@ class empleados extends React.Component{
       this.setState({
         tipoModal: 'actualizar',
         form: {
-          id: empleados.Id,
-          Cedula: empleados.Cedula,
-          Nombre: empleados.Nombre,
-          Apellido: empleados.Apellido,
-          Fecha: empleados.fechaNacimiento, 
-          Cargo: empleados.Cargo, 
-          Departamento: empleados.Departamento, 
-          HorarioTrabajo: empleados.HorarioTrabajo, 
-          Telefono: empleados.Telefono, 
-          correo: empleados.correo
+          id: empleados.id,
+          Cedula: empleados.identification,
+          Nombre: empleados.name,
+          Apellido: empleados.lastname,
+          Fecha: empleados.birthDate, 
+          Cargo: empleados.charge, 
+          Departamento: empleados.departament,
+          Telefono: empleados.phoneNumber, 
+          correo: empleados.email
         }
       })
     }
@@ -121,14 +117,9 @@ class empleados extends React.Component{
       <h1>Empleados</h1>
       <div className='Principal'>
         <div className='Secundario'>
-          <input type="text" className="form-control" placeholder='filtrar...' aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" />
-          <button className='btn btn-success' onClick={() => { 
-            this.setState({ form: null, tipoModal: "insertar" });
-            this.abrirModal();
-            }}
-            >Nuevo</button>
-            <br>
-            </br>
+          <Search />
+          <button className='btn btn-success' onClick={() => { this.setState({ form: null, tipoModal: "insertar" }); this.abrirModal();}}>Nuevo</button>
+          <br/>
         </div>
       </div>
     </div>
@@ -141,13 +132,11 @@ class empleados extends React.Component{
           <th scope="col">Nombre</th>
           <th scope="col">Apellido</th>
           <th scope="col">Cargo</th>
-          <th scope="col">Fecha de Nacimiento</th>
+          <th scope="col">Cumpleaños</th>
           <th scope="col">Departamento</th>
-          <th scope="col">Horario de Trabajo</th>
-          <th scope="col">Telefono</th> 
+          <th scope="col">Contacto</th> 
           <th scope="col">Correo</th>
           <th scope="col">Opciones</th>
-
         </tr>
       </thead>
 
@@ -155,34 +144,21 @@ class empleados extends React.Component{
         {this.state.data.map((empleados)=> {
           return(
             <tr>
-              <td>{empleados.Id}</td>
-              <td>{empleados.Cedula}</td>
-              <td>{empleados.Nombre}</td>
-              <td>{empleados.Apellido}</td>
-              <td>{empleados.Cargo}</td>
-              <td>{empleados.fechaNacimiento}</td>
-              <td>{empleados.Departamento}</td>
-              <td>{empleados.HorarioTrabajo}</td>
-              <td>{empleados.Telefono}</td>
-              <td>{empleados.correo}</td>
+              <td>{empleados.id}</td>
+              <td>{empleados.identification}</td>
+              <td>{empleados.name}</td>
+              <td>{empleados.lastname}</td>
+              <td>{empleados.charge}</td>
+              <td>{empleados.birthDate}</td>
+              <td>{empleados.department}</td>
+              <td>{empleados.phoneNumber}</td>
+              <td>{empleados.email}</td>
               <td>
-                <button
-                  className="btn btn-primary"
-                  onClick={() => {
-                    this.seleccionarProducto(empleados);
-                    this.abrirModal();
-                  }}
-                >
+                <button className="btn btn-primary" onClick={() => {this.seleccionarProducto(empleados); this.abrirModal();}}>
                   <FontAwesomeIcon icon={faEdit} />
                 </button>
-                {"   "}
-                <button
-                  className="btn btn-danger"
-                  onClick={() => {
-                    this.seleccionarProducto(empleados);
-                    this.setState({ modalEliminar: true });
-                  }}
-                >
+
+                <button className="btn btn-danger" onClick={() => {this.seleccionarProducto(empleados); this.setState({ modalEliminar: true });}}>
                   <FontAwesomeIcon icon={faTrashAlt} />
                 </button>
               </td>
@@ -200,84 +176,56 @@ class empleados extends React.Component{
           <ModalBody>
               <FormGroup>
 
-              <Label htmlFor="id">ID</Label>
-              <Input className="form-control" type="text" name="Id" id="id" readOnly onChange={this.handleChange} value={form?form.id: this.state.data.length+1}/>
+                <Label htmlFor="id">ID</Label>
+                <Input className="form-control" type="text" name="id" id="id" readOnly onChange={this.handleChange} value={form?form.id: this.state.data.length+1}/>
 
                 <Label for='Cedula'>Cedula</Label>
-                <Input type='text' name='Cedula'   onChange={this.handleChange} value={form ?  form.Cedula: ''}></Input>
+                <Input type='text' name='identification'   onChange={this.handleChange} value={form ?  form.identification: ''}></Input>
 
                 <Label for='Nombre'>Nombre</Label>
-                <Input type='text' name='Nombre' id='Nombre' onChange={this.handleChange} value={form ?  form.Nombre: ''}></Input>
+                <Input type='text' name='name' id='name' onChange={this.handleChange} value={form ?  form.name: ''}></Input>
 
                 <Label for='Apellidos'>Apellidos</Label>
-                <Input type='text' name='Apellido' id='Apellido' onChange={this.handleChange} value={form ? form.Apellido: ''}></Input>
+                <Input type='text' name='lastname' id='lastname' onChange={this.handleChange} value={form ? form.lastname: ''}></Input>
 
                 <Label for='Fecha'>Fecha de Nacimiento</Label>
-                <Input type='text' name='Fecha' id='Fecha' onChange={this.handleChange} value={form ?  form.fechaNacimiento: ''}></Input>
+                <Input type='date' name='birthDate' id='birthDate' onChange={this.handleChange} value={form ?  form.birthDate: ''}></Input>
 
                 <Label for='Cargo'>Cargo</Label>
-                <Input type='text' name='Cargo' id='Cargo' onChange={this.handleChange} value={form ?  form.Cargo: ''}></Input>
+                <Input type='text' name='charge' id='charge' onChange={this.handleChange} value={form ?  form.charge: ''}></Input>
 
                 <Label for='Departamento'>Departamento</Label>
-                <Input type='text' name='Departamento' id='Departamento' onChange={this.handleChange} value={form ?  form.Departamento: ''}></Input>
-
-                <Label for='HorarioTrabajo'>Horario de Trabajo</Label>
-                <Input type='text' name='HorarioTrabajo' id='HorarioTrabajo' onChange={this.handleChange} value={form ?  form.HorarioTrabajo: ''}></Input>
+                <Input type='text' name='department' id='department' onChange={this.handleChange} value={form ?  form.department: ''}></Input>
 
                 <Label for='Telefono'>Telefono</Label>
-                <Input type='text' name='Telefono' id='Telefono' onChange={this.handleChange} value={form ?  form.Telefono: ''}></Input>
+                <Input type='text' name='phoneNumber' id='phoneNumber' onChange={this.handleChange} value={form ?  form.phoneNumber: ''}></Input>
 
                 <Label for='Correo'>Correo Electronico</Label>
-                <Input type='text' name='correo' id='Correo' onChange={this.handleChange} value={form ?  form.correo: ''}></Input>
+                <Input type='text' name='email' id='email' onChange={this.handleChange} value={form ?  form.email: ''}></Input>
               </FormGroup>
           </ModalBody>
 
-        <ModalFooter>
-          {this.state.tipoModal === "insertar" ? (
-            <button
-              className="btn btn-success"
-              onClick={() => this.peticionPost()}
-            >
-              Insertar
-            </button>
-          ) : (
-            <button
-              className="btn btn-primary"
-              onClick={() => this.peticionPut()}
-            >
-              Actualizar
-            </button>
-          )}
-          <button
-            className="btn btn-danger"
-            onClick={() => this.abrirModal()}
-          >
-            Cancelar
-          </button>
-        </ModalFooter>
-      </Modal> 
+          <ModalFooter>
+            {this.state.tipoModal === "insertar" ? (
+              <button className="btn btn-success" onClick={() => this.peticionPost()}>Insertar</button>
+            ) : (
+              <button className="btn btn-primary" onClick={() => this.peticionPut()}>Actualizar</button>
+            )}
+            <button className="btn btn-danger" onClick={() => this.abrirModal()}>Cancelar</button>
+          </ModalFooter>
+        </Modal> 
 
-      <Modal isOpen={this.state.modalEliminar}>
-        <ModalBody>
-          ¿Estás seguro que deseas eliminar el empleado? {form && form.Nombre}
-        </ModalBody>
-        <ModalFooter>
-          <Button
-            className="btn btn-danger" onClick={()=> this.peticionDelete()}
-          >
-            Sí
-          </Button>
-          <Button
-            className="btn btn-secundary"
-            onClick={() => this.setState({ modalEliminar: false })}
-          >
-            No
-          </Button  >
+        <Modal isOpen={this.state.modalEliminar}>
+          <ModalBody>
+            ¿Estás seguro que deseas eliminar el empleado? {form && form.Nombre}
+          </ModalBody>
 
-          
-        </ModalFooter>
+          <ModalFooter>
+            <Button className="btn btn-danger" onClick={()=> this.peticionDelete()}>Sí</Button>
+            <Button className="btn btn-secundary" onClick={() => this.setState({ modalEliminar: false })}>No</Button  >
+          </ModalFooter>
         </Modal>
-        </div>
+      </div>
       
       </>
     )

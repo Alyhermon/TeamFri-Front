@@ -13,18 +13,6 @@
       "correo": "person@email.com"
     },
     {
-      "id": "2",
-      "Cedula": "402-434343-8",
-      "Nombre": "Manuel",
-      "Apellido": "No c",
-      "Fecha": "25-12-2000",
-      "Cargo": "Desarrollador",
-      "Departamento": "Desarrollo",
-      "HorarioTrabajo": "6 a 10",
-      "Telefono": "856-399-9493",
-      "correo": "person@email.com"
-    },
-    {
       "id": "3",
       "Cedula": "402-434343-8",
       "Nombre": "Cristian",
@@ -37,52 +25,16 @@
       "correo": "person@email.com"
     },
     {
-      "Cedula": "",
-      "Nombre": "",
-      "Apellido": "",
-      "Fecha": "",
-      "Cargo": "",
-      "Departamento": "",
-      "HorarioTrabajo": "",
-      "Telefono": "",
-      "correo": "",
-      "id": "JHkxxlq"
-    },
-    {
-      "Cedula": "",
-      "Nombre": "",
-      "Apellido": "",
-      "Fecha": "",
-      "Cargo": "",
-      "Departamento": "",
-      "HorarioTrabajo": "",
-      "Telefono": "",
-      "correo": "",
-      "id": "Yvsjjxi"
-    },
-    {
-      "Cedula": "",
-      "Nombre": "",
-      "Apellido": "",
-      "Fecha": "",
-      "Cargo": "",
-      "Departamento": "",
-      "HorarioTrabajo": "",
-      "Telefono": "",
-      "correo": "",
-      "id": "RuI-6kC"
-    },
-    {
-      "Cedula": "",
-      "Nombre": "",
-      "Apellido": "",
-      "Fecha": "",
-      "Cargo": "",
-      "Departamento": "",
-      "HorarioTrabajo": "",
-      "Telefono": "",
-      "correo": "",
-      "id": "hBLAtvd"
+      "Cedula": "w4rf4fr",
+      "Nombre": "mauricio",
+      "Apellido": "ramona",
+      "Fecha": "fwefewf",
+      "Cargo": "wfwef",
+      "Departamento": "fewfew",
+      "HorarioTrabajo": "efwef",
+      "Telefono": "efwef",
+      "correo": "wefwefew",
+      "id": "p7vw6c7"
     }
   ]
 }
