@@ -81,7 +81,7 @@ class empleados extends React.Component{
           lastName: empleados.lastName,
           birthDate: empleados.birthDate, 
           charge: empleados.charge, 
-          departament: empleados.departament,
+          departament: empleados.department,
           phoneNumber: empleados.phoneNumber, 
           email: empleados.email
         }
@@ -130,7 +130,6 @@ class empleados extends React.Component{
       <table className="table table-dark td" id='td'>
         <thead>
           <tr>
-          <th scope="col">Id</th>
             <th scope="col">Cedula</th>
             <th scope="col">Nombre</th>
             <th scope="col">Apellido</th>
@@ -147,7 +146,6 @@ class empleados extends React.Component{
           {this.state.data.map(empleados => {
             return(
               <tr>
-                <td>{empleados.id}</td>
                 <td>{empleados.identification}</td>
                 <td>{empleados.name}</td>
                 <td>{empleados.lastName}</td>
