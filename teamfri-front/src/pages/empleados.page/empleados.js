@@ -7,6 +7,7 @@ import {Button, Modal, ModalBody, ModalFooter, FormGroup, Input, Label} from 're
 import 'bootstrap/dist/css/bootstrap.css';
 import Search from '../../components/search/search';
 import Formulario from '../../components/B-Formulario/formulario';
+import PropTypes from 'prop-types';
 
 const url = 'https://localhost:44338/api/User';
 const urlPut = 'https://localhost:44338/api/User?id='
@@ -81,7 +82,7 @@ class empleados extends React.Component{
           lastName: empleados.lastName,
           birthDate: empleados.birthDate, 
           charge: empleados.charge, 
-          departament: empleados.department,
+          department: empleados.department,
           phoneNumber: empleados.phoneNumber, 
           email: empleados.email
         }
@@ -98,14 +99,14 @@ class empleados extends React.Component{
     });
   }
 
-  handleSearch = (search) => {
-    let results = this.state.data.filter((element) => {
-      if (element.toString().toLowerCase().includes.toString((search))){
-        return element;
-      }
-    });
-    console.log(results);
-    console.log(search);
+  handleSearch = (e) => {
+    // let results = this.state.data.filter((element) => {
+    //   if (element.toString().toLowerCase().includes(search.toLowerCase())){
+    //     return element;
+    //   }
+    // });
+    // console.log(results);
+    console.log(e);
   }
 
   componentDidMount(){
@@ -189,7 +190,7 @@ class empleados extends React.Component{
                 <Input type='text' name='name' id='name' onChange={this.handleChange} value={form ?  form.name: ''}></Input>
 
                 <Label for='Apellidos'>Apellidos</Label>
-                <Input type='text' name='lastname' id='lastname' onChange={this.handleChange} value={form ? form.lastName: ''}></Input>
+                <Input type='text' name='lastName' id='lastName' onChange={this.handleChange} value={form ? form.lastName: ''}></Input>
 
                 <Label for='Fecha'>Fecha de Nacimiento</Label>
                 <Input type='date' name='birthDate' id='birthDate' onChange={this.handleChange} value={form ?  form.birthDate: ''}></Input>
