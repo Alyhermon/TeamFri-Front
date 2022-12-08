@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import './search.scss'
 
 class Search extends React.Component {
@@ -19,7 +19,7 @@ class Search extends React.Component {
 
       return (
         <div className='search'>
-            <input type="text" onChange={() => this.handleChange(this.state.search)} className="form-control" placeholder='filtrar...' />
+            <input type="text" onChange={this.handleChange} value={search} className="form-control" placeholder='filtrar...' />
             <button onClick={handleSearch}><ion-icon name="search" ></ion-icon></button>
         </div>
       )
