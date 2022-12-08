@@ -22,7 +22,7 @@ class empleados extends React.Component{
       id: '',
       identification: '',
       name: '',
-      lastname: '',
+      lastName: '',
       birthDate: '', 
       charge: '', 
       department: '', 
@@ -96,10 +96,15 @@ class empleados extends React.Component{
         [e.target.name]: e.target.value
       }
     });
-    console.log(this.state.form);
   }
 
   handleSearch = (search) => {
+    const results = this.state.data.filter((element) => {
+      if (element.name.toString().toLowerCase().includes(search)){
+        return element;
+      }
+    });
+    console.log(results);
     console.log(search);
   }
 
