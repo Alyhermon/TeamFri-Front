@@ -1,7 +1,17 @@
 import React from 'react'
 import './dashboard.scss'
+import axios from 'axios';
+
+const url = 'https://localhost:44338/api/User';
 
 class DashBoard extends React.Component {
+
+  employees =()=> {
+    axios.get(url).then(respon=> {
+      this.setState({data: respon.data});
+    })
+  }
+
   render(){
     return (
       <div className='dash'>
