@@ -179,9 +179,6 @@ class empleados extends React.Component{
 
           <ModalBody>
               <FormGroup>
-                <Label htmlFor="id">ID</Label>
-                <Input className="form-control" type="text" name="id" id="id" readOnly onChange={this.handleChange} value={form?form.id: this.state.data.length+1}/>
-
                 <Label for='Cedula'>Cedula</Label>
                 <Input type='text' name='identification'   onChange={this.handleChange} value={form ?  form.identification: ''}></Input>
 
