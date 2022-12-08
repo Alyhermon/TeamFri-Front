@@ -2,10 +2,11 @@ import React from 'react';
 import './empleados.scss';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { faEdit, faExclamation, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import {Button, Modal, ModalBody, ModalFooter, FormGroup, Input, Label} from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import Search from '../../components/search/search';
+import Formulario from '../../components/B-Formulario/formulario';
 
 const urlGet = 'https://localhost:44338/api/User';
 const urlPost = 'https://localhost:44338/api/User';
@@ -78,7 +79,7 @@ class empleados extends React.Component{
           id: empleados.id,
           Cedula: empleados.identification,
           Nombre: empleados.name,
-          Apellido: empleados.lastname,
+          Apellido: empleados.lastName,
           Fecha: empleados.birthDate, 
           Cargo: empleados.charge, 
           Departamento: empleados.departament,
@@ -117,7 +118,7 @@ class empleados extends React.Component{
       <h1>Empleados</h1>
       <div className='Principal'>
         <div className='Secundario'>
-          <Search />
+          <Search handleSearch={this.handleSearch} />
           <button className='btn btn-success' onClick={() => { this.setState({ form: null, tipoModal: "insertar" }); this.abrirModal();}}>Nuevo</button>
           <br/>
         </div>
@@ -147,7 +148,7 @@ class empleados extends React.Component{
               <td>{empleados.id}</td>
               <td>{empleados.identification}</td>
               <td>{empleados.name}</td>
-              <td>{empleados.lastname}</td>
+              <td>{empleados.lastName}</td>
               <td>{empleados.charge}</td>
               <td>{empleados.birthDate}</td>
               <td>{empleados.department}</td>
@@ -157,7 +158,9 @@ class empleados extends React.Component{
                 <button className="btn btn-primary" onClick={() => {this.seleccionarProducto(empleados); this.abrirModal();}}>
                   <FontAwesomeIcon icon={faEdit} />
                 </button>
-
+                <button className="btn btn-primary" >
+                  <FontAwesomeIcon icon={faExclamation} />
+                </button>
                 <button className="btn btn-danger" onClick={() => {this.seleccionarProducto(empleados); this.setState({ modalEliminar: true });}}>
                   <FontAwesomeIcon icon={faTrashAlt} />
                 </button>
@@ -175,7 +178,6 @@ class empleados extends React.Component{
 
           <ModalBody>
               <FormGroup>
-
                 <Label htmlFor="id">ID</Label>
                 <Input className="form-control" type="text" name="id" id="id" readOnly onChange={this.handleChange} value={form?form.id: this.state.data.length+1}/>
 
@@ -186,7 +188,7 @@ class empleados extends React.Component{
                 <Input type='text' name='name' id='name' onChange={this.handleChange} value={form ?  form.name: ''}></Input>
 
                 <Label for='Apellidos'>Apellidos</Label>
-                <Input type='text' name='lastname' id='lastname' onChange={this.handleChange} value={form ? form.lastname: ''}></Input>
+                <Input type='text' name='lastname' id='lastname' onChange={this.handleChange} value={form ? form.lastName: ''}></Input>
 
                 <Label for='Fecha'>Fecha de Nacimiento</Label>
                 <Input type='date' name='birthDate' id='birthDate' onChange={this.handleChange} value={form ?  form.birthDate: ''}></Input>

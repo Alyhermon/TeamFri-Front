@@ -1,4 +1,9 @@
 import React from 'react'
+import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit, faExclamation, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import {Button, Modal, ModalBody, ModalFooter, FormGroup, Input, Label} from 'reactstrap';
+import 'bootstrap/dist/css/bootstrap.css';
 
 const url = 'http://localhost:3002/empleados';
 
@@ -40,11 +45,14 @@ class Formulario extends React.Component{
       }
 
       render(){
+
+        const {form} = this.state;
+
         return(
             <>
 
-<div className="Modal">
-        <Modal isOpen={this.state.abrirModal}>
+            <div className="Modal">
+            <Modal isOpen={this.state.abrirModal}>
 
                 <ModalBody>
                     <FormGroup>
@@ -91,19 +99,21 @@ class Formulario extends React.Component{
                 </ModalFooter>
             </Modal> 
 
-                <Modal isOpen={this.state.modalEliminar}>
-                <ModalBody>
-                    ¿Estás seguro que deseas eliminar el empleado? {form && form.Nombre}
-                </ModalBody>
+            <Modal isOpen={this.state.modalEliminar}>
+                <ModalBody>¿Estás seguro que deseas eliminar el empleado? {form && form.Nombre}</ModalBody>
 
                 <ModalFooter>
                     <Button className="btn btn-danger" onClick={()=> this.peticionDelete()}>Sí</Button>
                     <Button className="btn btn-secundary" onClick={() => this.setState({ modalEliminar: false })}>No</Button  >
                 </ModalFooter>
-                </Modal>
+            </Modal>
             </div>
+
+            <button className='btn btn-success' onClick={() => { this.setState({ form: null, tipoModal: "insertar" }); this.abrirModal();}}>Nuevo</button>
 
             </>
         )
       }
 }
+
+export default Formulario

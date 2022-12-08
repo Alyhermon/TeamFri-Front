@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-const Search = () => {
+const Search = (props) => {
     //hooks useState
     const [ users, setUsers ] = useState([]);
     const [ search, setSearch ] = useState("");
@@ -20,9 +20,7 @@ const Search = () => {
         console.log(e.target.value);
     }
 
-    // if(!search){
-    //     results = users
-    // }
+    const results = users.filter((dato) => dato.name.toLowerCase().includes(search.toLowerCase()));
 
     useEffect(() => {
         show();
