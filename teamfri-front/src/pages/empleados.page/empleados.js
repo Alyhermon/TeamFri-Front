@@ -18,6 +18,7 @@ class empleados extends React.Component{
   state = {
     abrirModal: false,
     modalEliminar: false,
+    modalDetalle: false,
     data:[],
     form:{ 
       id: '',
@@ -72,6 +73,10 @@ class empleados extends React.Component{
       this.setState({abrirModal: !this.state.abrirModal});
     }
 
+    // modalDetalle = () =>{
+    //   this.setState({modalDetalle: !this.state.modalDetalle})
+    // }
+
   seleccionarProducto=(empleados)=>{
       this.setState({
         tipoModal: 'actualizar',
@@ -101,13 +106,19 @@ class empleados extends React.Component{
 
   handleSearch = (search) => {
     let results = this.state.data.filter((element) => {
-      if (element.name.toString().toLowerCase().includes(search.toLowerCase())){
+      if (element.name.toString().toLowerCase().includes(search.toLowerCase()) || element.lastName.toString().toLowerCase().includes(search.toLowerCase())){
         return element;
-      }else{
-        this.setState({ data: []});
+      }
+      else if(element.name.toString().toLowerCase().includes(search.toLowerCase())  ){
+
+        return console.log('Ta funcionando');
+      }
+      else{
+
       }
     });
-    this.setState({ data: results});
+    this.setState({data: results});
+
     console.log(results);
   }
 
@@ -169,7 +180,7 @@ class empleados extends React.Component{
                   <button className="btn btn-danger" onClick={() => {this.seleccionarProducto(empleados); this.setState({ modalEliminar: true });}}>
                     <FontAwesomeIcon icon={faTrashAlt} />
                   </button>
-                  <button className="excla btn btn-secondary" >
+                  <button className="excla btn btn-secondary" onClick={() => {this.seleccionarProducto(empleados); this.setState({ modalDetalle: true });}}>
                     <FontAwesomeIcon icon={faExclamation} />
                   </button>
                 </td>
@@ -225,6 +236,13 @@ class empleados extends React.Component{
           <ModalBody>
             <p>Estás seguro que deseas eliminar el empleado cuyo nombre es:  <span><h6>{form && form.name}</h6></span></p>
           </ModalBody>
+
+          <Modal isOpen={this.state.modalDetalle}>
+            <ModalBody>
+              <p>Bienvenido a la vista detalles</p>
+            </ModalBody>
+
+          </Modal>
 
           <ModalFooter>
             <Button className="btn btn-danger" onClick={()=> this.peticionDelete()}>Sí</Button>
