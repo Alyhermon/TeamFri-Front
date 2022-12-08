@@ -15,6 +15,11 @@
             align-items: center;
             padding: 10px 30px;
 
+            img{
+                width: 60px;
+                margin: 50px;
+            }
+
             .text{
                 width: 100%;
                 display: flex;
@@ -33,21 +38,22 @@
         }
     }
 
-    ul{
+    .employee{
         display: grid;
         padding: 0;
         gap: 10px;
         margin: 0px;
        
         li{
-                list-style: none;
-                padding: 10px;
-                border-radius: 5px;
-                background-color: #D9D9D9;
+            display: flex;
+            list-style: none;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #D9D9D9;
 
-                p{
-                    margin: 0px;
-                }
+            h3{
+                margin: 0px;
+            }
         }
     }
 }

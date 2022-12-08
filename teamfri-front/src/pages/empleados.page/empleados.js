@@ -104,7 +104,7 @@ class empleados extends React.Component{
       if (element.name.toString().toLowerCase().includes(search.toLowerCase())){
         return element;
       }else{
-        this.setState({ data: []});
+        this.peticionGet();
       }
     });
     this.setState({ data: results});
@@ -135,7 +135,7 @@ class empleados extends React.Component{
         </div>
       </div>
 
-      <table className="table table-dark td" id='td'>
+      <table className="table table-dark tb">
         <thead>
           <tr>
             <th scope="col">Cedula</th>

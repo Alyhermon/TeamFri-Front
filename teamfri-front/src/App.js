@@ -9,7 +9,7 @@ import Nominas from './pages/nominas.page/nominas';
 function App() {
   return (
     <div className="App">
-      <div>
+      <div className='side'>
         <NavBar />
       </div>
       <div className='content'>
