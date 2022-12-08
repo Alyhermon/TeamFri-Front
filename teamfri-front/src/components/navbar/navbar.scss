@@ -1,3 +1,8 @@
+@mixin pad(){
+    @media screen and (max-width: 1000px){
+      @content;
+    }
+}
 $color: #353A40;
 
 .side{
@@ -11,6 +16,23 @@ $color: #353A40;
      'nav nav'
      'empty empty'
      ;
+
+     @include pad(){
+        width: 70px;
+
+        ul{
+            .link{
+
+                li{
+                    padding: 0px;
+
+                    p{
+                        display: none;
+                    }
+                }
+            }
+        }
+     }
 
     ul{
         box-sizing: border-box;
@@ -48,6 +70,10 @@ $color: #353A40;
                     font-size: 72px;
                     color: rgb(0, 0, 0);
                 }
+
+                p{
+                    margin: 0px;
+                }
     
                 &:hover{
                     background-color: white;
@@ -59,8 +85,8 @@ $color: #353A40;
         .active{
             background-color: white;
             color: $color;
-            margin: 0px 10px;
             border-radius: 5px;
+            margin: 10px;  
         }
     }
 }

@@ -36,9 +36,10 @@
             gap: 10px;
         }
 
-        #td{
+        .tb{
             overflow-x: scroll;
             overflow-y: scroll;
+            min-width: 1000px;
 
             &::-webkit-scrollbar{
                 width: 5px;
