@@ -1,6 +1,14 @@
 # TeamFri-Front
 
 ### Dependencias a instalar
+
+### Para instalar el paquete node_modules
+
+#### node modules
+```
+npm install
+```
+
 ##### react-router-dom
 ```
 npm install react-router-dom
@@ -17,11 +25,7 @@ npm install bootstrap
 ```
 npm install reactstrap
 ```
-#### free-solid-svg-icons
+##### axios
 ```
-npm install @fortawesome/free-solid-svg-icons
-```
-### react-fontawesome
-```
-npm install @fortawesome/react-fontawesome
+npm install axios
 ```

@@ -9,6 +9,7 @@ import Search from '../../components/search/search';
 import Formulario from '../../components/B-Formulario/formulario';
 
 const url = 'https://localhost:44338/api/User';
+const urlPut = 'https://localhost:44338/api/User?id='
 const urlDelete = 'https://localhost:44338/api/User/';
 
 class empleados extends React.Component{
@@ -51,7 +52,7 @@ class empleados extends React.Component{
 
   //Metodo Eliminar
   peticionPut=()=>{
-    axios.put(url+this.state.form.id, this.state.form).then(response=>{
+    axios.put(urlPut+this.state.form.id, this.state.form).then(response=>{
       this.abrirModal();
       this.peticionGet();
     })
@@ -75,14 +76,14 @@ class empleados extends React.Component{
         tipoModal: 'actualizar',
         form: {
           id: empleados.id,
-          Cedula: empleados.identification,
-          Nombre: empleados.name,
-          Apellido: empleados.lastName,
-          Fecha: empleados.birthDate, 
-          Cargo: empleados.charge, 
-          Departamento: empleados.departament,
-          Telefono: empleados.phoneNumber, 
-          correo: empleados.email
+          identification: empleados.identification,
+          name: empleados.name,
+          lastName: empleados.lastName,
+          birthDate: empleados.birthDate, 
+          charge: empleados.charge, 
+          departament: empleados.departament,
+          phoneNumber: empleados.phoneNumber, 
+          email: empleados.email
         }
       })
     }
@@ -133,8 +134,8 @@ class empleados extends React.Component{
             <th scope="col">Cedula</th>
             <th scope="col">Nombre</th>
             <th scope="col">Apellido</th>
-            <th scope="col">Cargo</th>
             <th scope="col">Cumpleaños</th>
+            <th scope="col">Cargo</th>
             <th scope="col">Departamento</th>
             <th scope="col">Contacto</th> 
             <th scope="col">Correo</th>
@@ -150,8 +151,8 @@ class empleados extends React.Component{
                 <td>{empleados.identification}</td>
                 <td>{empleados.name}</td>
                 <td>{empleados.lastName}</td>
-                <td>{empleados.charge}</td>
                 <td>{empleados.birthDate}</td>
+                <td>{empleados.charge}</td>
                 <td>{empleados.department}</td>
                 <td>{empleados.phoneNumber}</td>
                 <td>{empleados.email}</td>
@@ -159,11 +160,11 @@ class empleados extends React.Component{
                   <button className="btn btn-primary" onClick={() => {this.seleccionarProducto(empleados); this.abrirModal();}}>
                     <FontAwesomeIcon icon={faEdit} />
                   </button>
-                  <button className="btn btn-primary" >
-                    <FontAwesomeIcon icon={faExclamation} />
-                  </button>
                   <button className="btn btn-danger" onClick={() => {this.seleccionarProducto(empleados); this.setState({ modalEliminar: true });}}>
                     <FontAwesomeIcon icon={faTrashAlt} />
+                  </button>
+                  <button className="excla btn btn-secondary" >
+                    <FontAwesomeIcon icon={faExclamation} />
                   </button>
                 </td>
               </tr>
@@ -178,9 +179,6 @@ class empleados extends React.Component{
 
           <ModalBody>
               <FormGroup>
-                <Label htmlFor="id">ID</Label>
-                <Input className="form-control" type="text" name="id" id="id" readOnly onChange={this.handleChange} value={form?form.id: this.state.data.length+1}/>
-
                 <Label for='Cedula'>Cedula</Label>
                 <Input type='text' name='identification'   onChange={this.handleChange} value={form ?  form.identification: ''}></Input>
 
@@ -219,7 +217,7 @@ class empleados extends React.Component{
 
         <Modal isOpen={this.state.modalEliminar}>
           <ModalBody>
-            ¿Estás seguro que deseas eliminar el empleado? {form && form.Nombre}
+            <p>Estás seguro que deseas eliminar el empleado cuyo nombre es:  <span><h6>{form && form.name}</h6></span></p>
           </ModalBody>
 
           <ModalFooter>
