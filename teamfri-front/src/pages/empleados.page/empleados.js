@@ -134,8 +134,8 @@ class empleados extends React.Component{
             <th scope="col">Cedula</th>
             <th scope="col">Nombre</th>
             <th scope="col">Apellido</th>
-            <th scope="col">Cargo</th>
             <th scope="col">Cumpleaños</th>
+            <th scope="col">Cargo</th>
             <th scope="col">Departamento</th>
             <th scope="col">Contacto</th> 
             <th scope="col">Correo</th>
@@ -151,8 +151,8 @@ class empleados extends React.Component{
                 <td>{empleados.identification}</td>
                 <td>{empleados.name}</td>
                 <td>{empleados.lastName}</td>
-                <td>{empleados.charge}</td>
                 <td>{empleados.birthDate}</td>
+                <td>{empleados.charge}</td>
                 <td>{empleados.department}</td>
                 <td>{empleados.phoneNumber}</td>
                 <td>{empleados.email}</td>
@@ -220,7 +220,7 @@ class empleados extends React.Component{
 
         <Modal isOpen={this.state.modalEliminar}>
           <ModalBody>
-            ¿Estás seguro que deseas eliminar el empleado? {form && form.Nombre}
+            <p>Estás seguro que deseas eliminar el empleado cuyo nombre es:  <span><h6>{form && form.name}</h6></span></p>
           </ModalBody>
 
           <ModalFooter>
