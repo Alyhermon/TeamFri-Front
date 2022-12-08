@@ -99,8 +99,8 @@ class empleados extends React.Component{
   }
 
   handleSearch = (search) => {
-    const results = this.state.data.filter((element) => {
-      if (element.name.toString().toLowerCase().includes(search)){
+    let results = this.state.data.filter((element) => {
+      if (element.toString().toLowerCase().includes.toString((search))){
         return element;
       }
     });
@@ -125,7 +125,7 @@ class empleados extends React.Component{
         <h1>Empleados</h1>
         <div className='Principal'>
           <div className='Secundario'>
-            <Search handleSearch={this.handleSearch} />
+            <Search handleSearch={this.handleSearch()} />
             <button className='btn btn-success' onClick={() => { this.setState({ form: null, tipoModal: "insertar" }); this.abrirModal();}}>Nuevo</button>
             <br/>
           </div>
