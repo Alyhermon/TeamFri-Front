@@ -1,16 +1,18 @@
 import React from 'react';
 import './empleados.scss';
 import axios from 'axios';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faExclamation, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import {Button, Modal, ModalBody, ModalFooter, FormGroup, Input, Label} from 'reactstrap';
+
 import 'bootstrap/dist/css/bootstrap.css';
 import Search from '../../components/search/search';
-import Formulario from '../../components/B-Formulario/formulario';
 
 const url = 'https://localhost:44338/api/User';
 const urlPut = 'https://localhost:44338/api/User?id='
 const urlDelete = 'https://localhost:44338/api/User/';
+let results = [];
 
 class empleados extends React.Component{
 
@@ -81,7 +83,7 @@ class empleados extends React.Component{
           lastName: empleados.lastName,
           birthDate: empleados.birthDate, 
           charge: empleados.charge, 
-          departament: empleados.department,
+          department: empleados.department,
           phoneNumber: empleados.phoneNumber, 
           email: empleados.email
         }
@@ -99,13 +101,11 @@ class empleados extends React.Component{
   }
 
   handleSearch = (search) => {
-    let results = this.state.data.filter((element) => {
-      if (element.toString().toLowerCase().includes.toString((search))){
+    results = this.state.data.filter((element) => {
+      if (element.name.toString().toLowerCase().includes(search.toLowerCase())){
         return element;
       }
     });
-    console.log(results);
-    console.log(search);
   }
 
   componentDidMount(){
@@ -125,7 +125,7 @@ class empleados extends React.Component{
         <h1>Empleados</h1>
         <div className='Principal'>
           <div className='Secundario'>
-            <Search handleSearch={this.handleSearch()} />
+            <Search handleSearch={this.handleSearch} />
             <button className='btn btn-success' onClick={() => { this.setState({ form: null, tipoModal: "insertar" }); this.abrirModal();}}>Nuevo</button>
             <br/>
           </div>
@@ -189,7 +189,7 @@ class empleados extends React.Component{
                 <Input type='text' name='name' id='name' onChange={this.handleChange} value={form ?  form.name: ''}></Input>
 
                 <Label for='Apellidos'>Apellidos</Label>
-                <Input type='text' name='lastname' id='lastname' onChange={this.handleChange} value={form ? form.lastName: ''}></Input>
+                <Input type='text' name='lastName' id='lastName' onChange={this.handleChange} value={form ? form.lastName: ''}></Input>
 
                 <Label for='Fecha'>Fecha de Nacimiento</Label>
                 <Input type='date' name='birthDate' id='birthDate' onChange={this.handleChange} value={form ?  form.birthDate: ''}></Input>

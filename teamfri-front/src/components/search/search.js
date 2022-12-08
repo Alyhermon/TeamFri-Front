@@ -12,14 +12,14 @@ class Search extends React.Component {
         this.setState({ search: e.target.value });
     }
 
-    //render
     render() {
         const { handleSearch } = this.props
         const { search } = this.state
 
       return (
         <div className='search'>
-            <input type="text" onChange={this.handleChange} onClick={handleSearch} value={search} className="form-control" placeholder='filtrar...' />
+            <input type="text" onChange={this.handleChange} value={ search } className="form-control" placeholder='filtrar...' />
+            <button onClick={() => handleSearch(search)}><ion-icon name="search"></ion-icon></button>
         </div>
       )
     }
