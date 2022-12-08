@@ -1,17 +1,18 @@
 import React from 'react';
 import './empleados.scss';
 import axios from 'axios';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faExclamation, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import {Button, Modal, ModalBody, ModalFooter, FormGroup, Input, Label} from 'reactstrap';
+
 import 'bootstrap/dist/css/bootstrap.css';
 import Search from '../../components/search/search';
-import Formulario from '../../components/B-Formulario/formulario';
-import PropTypes from 'prop-types';
 
 const url = 'https://localhost:44338/api/User';
 const urlPut = 'https://localhost:44338/api/User?id='
 const urlDelete = 'https://localhost:44338/api/User/';
+let results = [];
 
 class empleados extends React.Component{
 
@@ -99,14 +100,12 @@ class empleados extends React.Component{
     });
   }
 
-  handleSearch = (e) => {
-    // let results = this.state.data.filter((element) => {
-    //   if (element.toString().toLowerCase().includes(search.toLowerCase())){
-    //     return element;
-    //   }
-    // });
-    // console.log(results);
-    console.log(e);
+  handleSearch = (search) => {
+    results = this.state.data.filter((element) => {
+      if (element.name.toString().toLowerCase().includes(search.toLowerCase())){
+        return element;
+      }
+    });
   }
 
   componentDidMount(){
@@ -126,7 +125,7 @@ class empleados extends React.Component{
         <h1>Empleados</h1>
         <div className='Principal'>
           <div className='Secundario'>
-            <Search handleSearch={this.handleSearch()} />
+            <Search handleSearch={this.handleSearch} />
             <button className='btn btn-success' onClick={() => { this.setState({ form: null, tipoModal: "insertar" }); this.abrirModal();}}>Nuevo</button>
             <br/>
           </div>
