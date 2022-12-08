@@ -12,7 +12,6 @@ import Search from '../../components/search/search';
 const url = 'https://localhost:44338/api/User';
 const urlPut = 'https://localhost:44338/api/User?id='
 const urlDelete = 'https://localhost:44338/api/User/';
-let results = [];
 
 class empleados extends React.Component{
 
@@ -101,11 +100,15 @@ class empleados extends React.Component{
   }
 
   handleSearch = (search) => {
-    results = this.state.data.filter((element) => {
+    let results = this.state.data.filter((element) => {
       if (element.name.toString().toLowerCase().includes(search.toLowerCase())){
         return element;
+      }else{
+        this.setState({ data: []});
       }
     });
+    this.setState({ data: results});
+    console.log(results);
   }
 
   componentDidMount(){
