@@ -31,6 +31,10 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: flex-end;
+
+                h1{
+                    font-weight: 350;
+                }
             }
 
             h1{
@@ -63,8 +67,9 @@
             border-radius: 5px;
             background-color: #D9D9D9;
 
-            h3{
+            h4{
                 margin: 0px;
+                font-weight: 350;
             }
         }
     }
