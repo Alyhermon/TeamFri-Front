@@ -20,6 +20,23 @@
 
 }
 
+.details{
+    display: grid;
+    gap: 30px;
+
+    .atribute{
+        display: flex;
+
+        .title{
+            font-weight: 500;
+        }
+
+        .p{
+            font-weight: 350;
+        }
+    }
+}
+
 .empleadostb{
     width: 100%;
     display: flex;
