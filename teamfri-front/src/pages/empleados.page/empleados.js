@@ -222,31 +222,36 @@ class empleados extends React.Component{
         </Modal> 
 
         <Modal isOpen={this.state.modalDetalle}>
-          <ModalBody>
-            <span><h4>Nombres: </h4><h5>{form && form.name}</h5></span>
-            <br>
-            </br>
-            <span><h4>Apellidos: </h4><h5>{form && form.lastName}</h5></span>
-            <br>
-            </br>
-            <span><h4>Fecha de Nacimiento: </h4><h5>{form && form.birthDate}</h5></span>
-            <br>
-            </br>
-            <span><h4>Cargo: </h4><h5>{form && form.charge}</h5></span>
-            <br>
-            </br>
-            <span><h4>Departamento: </h4><h5>{form && form.department}</h5></span>
-            <br>
-            </br>
-            <span><h4>Telefono: </h4><h5>{form && form.phoneNumber}</h5></span>
-            <br>
-            </br>
-            <span><h4>Correo Electronico: </h4><h5>{form && form.email}</h5></span>
+          <ModalBody className='details'>
+          <div className='atribute'>
+              <h4 className='title'>Cedula: </h4><h4 className='p'>{form && form.identification}</h4>
+            </div>
+            <div className='atribute'>
+              <h4 className='title'>Nombres: </h4><h4 className='p'>{form && form.name}</h4>
+            </div>
+            <div className='atribute'>
+              <h4 className='title'>Apellidos: </h4><h4 className='p'>{form && form.lastName}</h4>
+            </div>
+            <div className='atribute'>
+              <h4 className='title'>Cumpleaños: </h4><h4 className='p'>{form && form.birthDate}</h4>
+            </div>
+            <div className='atribute'>
+              <h4 className='title'>Cargo: </h4><h4 className='p'>{form && form.charge}</h4>
+            </div>
+            <div className='atribute'>
+              <h4 className='title'>Departamento: </h4><h4 className='p'>{form && form.department}</h4>
+            </div>
+            <div className='atribute'>
+              <h4 className='title'>Contacto: </h4><h4 className='p'>{form && form.phoneNumber}</h4>
+            </div>
+            <div className='atribute'>
+              <h4 className='title'>Correo: </h4><h4 className='p'>{form && form.email}</h4>
+            </div>
           </ModalBody>
+
           <ModalFooter>
             <Button className="btn btn-sucess" onClick={()=> this.setState({modalDetalle: false})}> Ok</Button>
           </ModalFooter>
-
         </Modal>
 
         <Modal isOpen={this.state.modalEliminar}>
