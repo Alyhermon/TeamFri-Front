@@ -40,7 +40,7 @@ class DashBoard extends React.Component {
           </NavLink>
           <NavLink to='/vacaciones' className='link'>
           <div className="card">
-            <img src={nomina} className="card-img-top" alt="..."/>
+            <img src={calendar} className="card-img-top" alt="..."/>
             <div className='text'>
               <h1>0</h1> {/*numero representativo */}
               <h3>Vacaciones</h3>
@@ -49,7 +49,7 @@ class DashBoard extends React.Component {
           </NavLink>
           <NavLink to='/nominas' className='link'>
           <div className='card'>
-            <img src={calendar} className="card-img-top" alt="..."/>
+            <img src={nomina} className="card-img-top" alt="..."/>
             <div className='text'>
               <h1>0</h1>
               <h3>Nomina</h3>
@@ -64,7 +64,7 @@ class DashBoard extends React.Component {
           this.state.data.map(employee => {
             return(
               <li>
-                <h3>{employee.name} {employee.lastName}</h3>
+                <h4>{employee.name} {employee.lastName}</h4>
               </li>
             )
           })
