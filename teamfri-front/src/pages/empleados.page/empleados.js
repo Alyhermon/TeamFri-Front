@@ -169,7 +169,7 @@ class empleados extends React.Component{
                   <button className="btn btn-danger" onClick={() => {this.seleccionarProducto(empleados); this.setState({ modalEliminar: true });}}>
                     <FontAwesomeIcon icon={faTrashAlt} />
                   </button>
-                  <button className="excla btn btn-secondary" >
+                  <button className="excla btn btn-secondary" onClick={() => {this.seleccionarProducto(empleados); this.setState({ modalDetalle: true });}}>
                     <FontAwesomeIcon icon={faExclamation} />
                   </button>
                 </td>
@@ -220,6 +220,34 @@ class empleados extends React.Component{
             <button className="btn btn-danger" onClick={() => this.abrirModal()}>Cancelar</button>
           </ModalFooter>
         </Modal> 
+
+        <Modal isOpen={this.state.modalDetalle}>
+          <ModalBody>
+            <span><h4>Nombre: </h4><h5>{form && form.name}</h5></span>
+            <br>
+            </br>
+            <span><h4>Apellido: </h4><h5>{form && form.lastName}</h5></span>
+            <br>
+            </br>
+            <span><h4>Fecha de Nacimiento: </h4><h5>{form && form.name}</h5></span>
+            <br>
+            </br>
+            <span><h4>Cargo: </h4><h5>{form && form.charge}</h5></span>
+            <br>
+            </br>
+            <span><h4>Departamento: </h4><h5>{form && form.department}</h5></span>
+            <br>
+            </br>
+            <span><h4>Telefono: </h4><h5>{form && form.phoneNumber}</h5></span>
+            <br>
+            </br>
+            <span><h4>Correo Electronico: </h4><h5>{form && form.email}</h5></span>
+          </ModalBody>
+          <ModalFooter>
+            <Button className="btn btn-sucess" onClick={()=> this.setState({modalDetalle: false})}> Ok</Button>
+          </ModalFooter>
+
+        </Modal>
 
         <Modal isOpen={this.state.modalEliminar}>
           <ModalBody>
