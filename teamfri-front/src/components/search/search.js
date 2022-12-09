@@ -18,8 +18,7 @@ class Search extends React.Component {
 
       return (
         <div className='search'>
-            <input type="text" onChange={this.handleChange} value={ search } className="form-control" placeholder='filtrar...' />
-            <button onClick={() => handleSearch(search)}><ion-icon name="search"></ion-icon></button>
+            <input type="text" onChange={this.handleChange} onKeyUp={() => handleSearch(search)} value={ search } className="form-control" placeholder='filtrar...' />
         </div>
       )
     }

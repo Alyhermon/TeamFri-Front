@@ -100,15 +100,17 @@ class empleados extends React.Component{
   }
 
   handleSearch = (search) => {
-    let results = this.state.data.filter((element) => {
-      if (element.name.toString().toLowerCase().includes(search.toLowerCase())){
-        return element;
-      }else{
-        this.peticionGet();
-      }
-    });
-    this.setState({ data: results});
-    console.log(results);
+    if(search == ''){
+      this.peticionGet();
+    } else {
+      let results = this.state.data.filter((element) => {
+        if (element.name.toString().toLowerCase().includes(search.toLowerCase())
+        || (element.lastName.toString().toLowerCase().includes(search.toLowerCase()))){
+          return element;
+        }
+      });
+      this.setState({ data: results});
+    }
   }
 
   componentDidMount(){
