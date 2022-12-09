@@ -223,13 +223,13 @@ class empleados extends React.Component{
 
         <Modal isOpen={this.state.modalDetalle}>
           <ModalBody>
-            <span><h4>Nombre: </h4><h5>{form && form.name}</h5></span>
+            <span><h4>Nombres: </h4><h5>{form && form.name}</h5></span>
             <br>
             </br>
-            <span><h4>Apellido: </h4><h5>{form && form.lastName}</h5></span>
+            <span><h4>Apellidos: </h4><h5>{form && form.lastName}</h5></span>
             <br>
             </br>
-            <span><h4>Fecha de Nacimiento: </h4><h5>{form && form.name}</h5></span>
+            <span><h4>Fecha de Nacimiento: </h4><h5>{form && form.birthDate}</h5></span>
             <br>
             </br>
             <span><h4>Cargo: </h4><h5>{form && form.charge}</h5></span>
