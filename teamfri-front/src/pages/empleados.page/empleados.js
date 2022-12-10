@@ -100,7 +100,7 @@ class empleados extends React.Component{
   }
 
   handleSearch = (search) => {
-    if(search == ''){
+    if(search === ''){
       this.peticionGet();
     } else {
       let results = this.state.data.filter((element) => {
