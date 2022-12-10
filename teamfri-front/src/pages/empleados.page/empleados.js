@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faExclamation, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
-import {Button, Modal, ModalBody, ModalFooter, FormGroup, Input, Label} from 'reactstrap';
+import {Button, Modal, ModalBody, ModalFooter, FormGroup, Input, Label, ModalHeader} from 'reactstrap';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import Search from '../../components/search/search';
@@ -224,30 +224,36 @@ class empleados extends React.Component{
         </Modal> 
 
         <Modal isOpen={this.state.modalDetalle}>
+          <ModalHeader>
+            <div id='detalles'>
+            <h3>Detalles de los Empleados</h3>
+            </div>
+          </ModalHeader>
+          
           <ModalBody className='details'>
           <div className='atribute'>
-              <h4 className='title'>Cedula: </h4><h4 className='p'>{form && form.identification}</h4>
+              <h4 className='titleNAC'  id='Ced'>Cedula : </h4><h4 className='p'>{form && form.identification}</h4>
             </div>
             <div className='atribute'>
-              <h4 className='title'>Nombres: </h4><h4 className='p'>{form && form.name}</h4>
+              <h4 className='titleNA' id='Nom'>Nombres : </h4><h4 className='p'>{form && form.name}</h4>
             </div>
             <div className='atribute'>
-              <h4 className='title'>Apellidos: </h4><h4 className='p'>{form && form.lastName}</h4>
+              <h4 className='titleNA' id='Ape'>Apellidos : </h4><h4 className='p'>{form && form.lastName}</h4>
             </div>
             <div className='atribute'>
-              <h4 className='title'>Cumpleaños: </h4><h4 className='p'>{form && form.birthDate}</h4>
+              <h4 className='titlecumple' id='Cumpl'>Cumpleaños : </h4><h4 className='p'>{form && form.birthDate}</h4>
             </div>
             <div className='atribute'>
-              <h4 className='title'>Cargo: </h4><h4 className='p'>{form && form.charge}</h4>
+              <h4 className='title5' id='Carg'>Cargo : </h4><h4 className='p'>{form && form.charge}</h4>
             </div>
             <div className='atribute'>
-              <h4 className='title'>Departamento: </h4><h4 className='p'>{form && form.department}</h4>
+              <h4 className='titleDepa' id='Depa'>Departamento : </h4><h4 className='p'>{form && form.department}</h4>
             </div>
             <div className='atribute'>
-              <h4 className='title'>Contacto: </h4><h4 className='p'>{form && form.phoneNumber}</h4>
+              <h4 className='titleC' id='Conta'>Contacto : </h4><h4 className='p'>{form && form.phoneNumber}</h4>
             </div>
             <div className='atribute'>
-              <h4 className='title'>Correo: </h4><h4 className='p'>{form && form.email}</h4>
+              <h4 className='title5' id='Corr'>Correo : </h4><h4 className='p'>{form && form.email}</h4>
             </div>
           </ModalBody>
 

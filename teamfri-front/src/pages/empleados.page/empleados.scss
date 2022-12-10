@@ -20,20 +20,58 @@
 
 }
 
+#detalles{
+    margin-left: 60px;
+}
+
 .details{
     display: grid;
     gap: 30px;
 
+
+
     .atribute{
         display: flex;
 
-        .title{
-            font-weight: 500;
-        }
-
         .p{
             font-weight: 350;
+            margin-left: 10px;
         }
+        #Ced{
+            margin-left: 16%;
+        }
+
+        #Nom{
+            margin-left: 13%;
+        }
+
+        #Ape{
+            margin-left: 13%;
+        }
+
+        #Cumpl{
+            margin-left: 6%;
+
+        }
+
+        #Carg{
+            margin-left: 21%;
+        }
+
+        #Depa{
+            margin-left: 1%;
+
+        }
+
+        #Conta{
+            margin-left: 14%;
+        }
+
+        #Corr{
+            margin-left: 19%;
+
+        }
+
     }
 }
 
