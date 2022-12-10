@@ -2,8 +2,6 @@
 
 ### Dependencias a instalar
 
-### Para instalar el paquete node_modules
-
 #### node modules
 ```
 npm install
