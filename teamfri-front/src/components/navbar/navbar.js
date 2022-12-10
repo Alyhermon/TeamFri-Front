@@ -9,25 +9,25 @@ function NavBar() {
         <ul>
             <NavLink to='/' className='link' activeclassname='active'>
                 <li>
-                <ion-icon size='large' name="home-outline" className="icon"></ion-icon>
+                <i className="fi fi-rr-dashboard icon"></i>
                 <p>Dashboard</p>
                 </li>
             </NavLink>
             <NavLink to='/empleados' className='link' activeclassname='active'>
                 <li>
-                <ion-icon size='large' name="people-outline" className="icon"></ion-icon>
+                <i className="fi fi-rr-users-alt icon"></i>
                 <p>Empleados</p>
                 </li>
             </NavLink>
             <NavLink to='/vacaciones' className='link' activeclassname='active'>
                 <li>
-                <ion-icon size='large' name="calendar-outline" className="icon"></ion-icon>
+                <i className="fi fi-rr-calendar icon"></i>
                 <p>Vacaciones</p>
                 </li>
             </NavLink>
             <NavLink to='/nominas' className='link' activeclassname='active'>
                 <li>
-                <ion-icon size='large' name="document-text-outline" className="icon"></ion-icon>
+                <i className="fi fi-rr-list-check icon"></i>
                 <p>Nominas</p>
                 </li>
             </NavLink>
