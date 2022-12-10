@@ -9,7 +9,7 @@ $color: #353A40;
     background-color: $color;
     color: rgb(255, 255, 255);
     height: 100vh;
-    width: 300px;
+    width: 250px;
     display: grid;
     grid-template-areas:
      'e e'
@@ -67,8 +67,7 @@ $color: #353A40;
     
                 .icon{
                     grid-area: icon;
-                    font-size: 72px;
-                    color: rgb(0, 0, 0);
+                    font-size: 24px;
                 }
 
                 p{
@@ -78,6 +77,7 @@ $color: #353A40;
                 &:hover{
                     background-color: white;
                     color: $color;
+                    margin: 0px 10px; 
                 }
             }
         }
@@ -86,7 +86,9 @@ $color: #353A40;
             background-color: white;
             color: $color;
             border-radius: 5px;
-            margin: 10px;  
+            margin: 0px 10px;
+            padding: 0px;
+            transition: all 500ms;
         }
     }
 }
