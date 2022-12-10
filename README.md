@@ -29,3 +29,7 @@ npm install reactstrap
 ```
 npm install axios
 ```
+##### JSON Server
+```
+npm install json-server
+```
