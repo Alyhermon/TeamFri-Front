@@ -2,8 +2,6 @@ import React from 'react';
 import './empleados.scss';
 import axios from 'axios';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit, faExclamation, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import {Button, Modal, ModalBody, ModalFooter, FormGroup, Input, Label, ModalHeader} from 'reactstrap';
 
 import 'bootstrap/dist/css/bootstrap.css';
