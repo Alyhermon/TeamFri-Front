@@ -2,8 +2,6 @@ import React from 'react';
 import './empleados.scss';
 import axios from 'axios';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit, faExclamation, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import {Button, Modal, ModalBody, ModalFooter, FormGroup, Input, Label, ModalHeader} from 'reactstrap';
 
 import 'bootstrap/dist/css/bootstrap.css';
@@ -140,9 +138,9 @@ class empleados extends React.Component{
       <table className="table table-dark tb">
         <thead>
           <tr>
-            <th scope="col">Cedula</th>
+            <th scope="col">Identificación</th>
             <th scope="col">Nombre</th>
-            <th scope="col">Apellido</th>
+            <th scope="col">Apellidos</th>
             <th scope="col">Cumpleaños</th>
             <th scope="col">Cargo</th>
             <th scope="col">Departamento</th>
@@ -165,14 +163,14 @@ class empleados extends React.Component{
                 <td>{empleados.phoneNumber}</td>
                 <td>{empleados.email}</td>
                 <td>
+                  <button className="excla btn btn-primary" onClick={() => {this.seleccionarProducto(empleados); this.setState({ modalDetalle: true });}}>
+                    <i className="fi fi-rr-info"></i>
+                  </button>
                   <button className="btn btn-primary" onClick={() => {this.seleccionarProducto(empleados); this.abrirModal();}}>
-                    <FontAwesomeIcon icon={faEdit} />
+                    <i className="fi fi-rr-pencil"></i>
                   </button>
                   <button className="btn btn-danger" onClick={() => {this.seleccionarProducto(empleados); this.setState({ modalEliminar: true });}}>
-                    <FontAwesomeIcon icon={faTrashAlt} />
-                  </button>
-                  <button className="excla btn btn-secondary" onClick={() => {this.seleccionarProducto(empleados); this.setState({ modalDetalle: true });}}>
-                    <FontAwesomeIcon icon={faExclamation} />
+                    <i className="fi fi-rr-trash"></i>
                   </button>
                 </td>
               </tr>
@@ -182,8 +180,19 @@ class empleados extends React.Component{
       </table>
       </div>
       
+      {/* modal de agregar empleado */}
       <div className="Modal">
         <Modal isOpen={this.state.abrirModal}>
+
+          <ModalHeader>
+            <div id='detalles'>
+              {this.state.tipoModal === "insertar" ? (
+                <h3>Nuevo empleado</h3>
+              ) : (
+                <h3>Editando a {form && form.name}</h3>
+              )}
+            </div>
+          </ModalHeader>
 
           <ModalBody>
               <FormGroup>
@@ -215,18 +224,19 @@ class empleados extends React.Component{
 
           <ModalFooter>
             {this.state.tipoModal === "insertar" ? (
-              <button className="btn btn-success" onClick={() => this.peticionPost()}>Insertar</button>
+              <button className="btn btn-primary" onClick={() => this.peticionPost()}>Agregar</button>
             ) : (
-              <button className="btn btn-primary" onClick={() => this.peticionPut()}>Actualizar</button>
+              <button className="btn btn-primary" onClick={() => this.peticionPut()}>Guardar cambios</button>
             )}
             <button className="btn btn-danger" onClick={() => this.abrirModal()}>Cancelar</button>
           </ModalFooter>
         </Modal> 
 
+        {/* modal de detalles */}
         <Modal isOpen={this.state.modalDetalle}>
           <ModalHeader>
             <div id='detalles'>
-            <h3>Detalles de los Empleados</h3>
+              <h3>Detalles de {form && form.name}</h3>
             </div>
           </ModalHeader>
           
@@ -258,13 +268,13 @@ class empleados extends React.Component{
           </ModalBody>
 
           <ModalFooter>
-            <Button className="btn btn-sucess" onClick={()=> this.setState({modalDetalle: false})}> Ok</Button>
+            <Button className="btn btn-primary" onClick={()=> this.setState({modalDetalle: false})}>Aceptar</Button>
           </ModalFooter>
         </Modal>
 
         <Modal isOpen={this.state.modalEliminar}>
           <ModalBody>
-            <p>Estás seguro que deseas eliminar el empleado cuyo nombre es:  <span><h6>{form && form.name}</h6></span></p>
+            <p>Estás seguro que deseas eliminar a <span><h6>{form && form.name}</h6></span>?</p>
           </ModalBody>
 
           <ModalFooter>
