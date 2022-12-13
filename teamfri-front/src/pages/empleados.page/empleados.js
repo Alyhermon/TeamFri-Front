@@ -219,28 +219,28 @@ class empleados extends React.Component{
           <ModalBody>
               <FormGroup>
                 <Label for='Cedula'>Cedula</Label>
-                <Input type='text' name='identification'   onChange={this.handleChange} value={form ?  form.identification: ''}></Input>
+                <Input type='text' maxlength="13" required name='identification'   onChange={this.handleChange} value={form ?  form.identification: ''}></Input>
 
                 <Label for='Nombre'>Nombre</Label>
-                <Input type='text' name='name' id='name' onChange={this.handleChange} value={form ?  form.name: ''}></Input>
+                <Input type='text' name='name' id='name' required onChange={this.handleChange} value={form ?  form.name: ''}></Input>
 
                 <Label for='Apellidos'>Apellidos</Label>
-                <Input type='text' name='lastName' id='lastName' onChange={this.handleChange} value={form ? form.lastName: ''}></Input>
+                <Input type='text' name='lastName' id='lastName' required onChange={this.handleChange} value={form ? form.lastName: ''}></Input>
 
                 <Label for='Fecha'>Fecha de Nacimiento</Label>
                 <Input type='date' name='birthDate' id='birthDate' onChange={this.handleChange} value={form ?  form.birthDate: ''}></Input>
 
                 <Label for='Cargo'>Cargo</Label>
-                <Input type='text' name='charge' id='charge' onChange={this.handleChange} value={form ?  form.charge: ''}></Input>
+                <Input type='text' name='charge' id='charge' required onChange={this.handleChange} value={form ?  form.charge: ''}></Input>
 
                 <Label for='Departamento'>Departamento</Label>
-                <Input type='text' name='department' id='department' onChange={this.handleChange} value={form ?  form.department: ''}></Input>
+                <Input type='text' name='department' id='department' required onChange={this.handleChange} value={form ?  form.department: ''}></Input>
 
                 <Label for='Telefono'>Telefono</Label>
-                <Input type='text' name='phoneNumber' id='phoneNumber' onChange={this.handleChange} value={form ?  form.phoneNumber: ''}></Input>
+                <Input type='text' name='phoneNumber' id='phoneNumber' required onChange={this.handleChange} value={form ?  form.phoneNumber: ''}></Input>
 
                 <Label for='Correo'>Correo Electronico</Label>
-                <Input type='text' name='email' id='email' onChange={this.handleChange} value={form ?  form.email: ''}></Input>
+                <Input type='email' required name='email' id='email' onChange={this.handleChange} value={form ?  form.email: ''}></Input>
               </FormGroup>
           </ModalBody>
 
