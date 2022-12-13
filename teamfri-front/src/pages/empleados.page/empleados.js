@@ -1,7 +1,7 @@
 import React from 'react';
 import './empleados.scss';
 import axios from 'axios';
-
+import Swal from 'sweetalert2';
 import {Button, Modal, ModalBody, ModalFooter, FormGroup, Input, Label, ModalHeader} from 'reactstrap';
 
 import 'bootstrap/dist/css/bootstrap.css';
@@ -35,6 +35,8 @@ class empleados extends React.Component{
   peticionGet =()=> {
     axios.get(url).then(respon=> {
       this.setState({data: respon.data});
+    }).catch(error =>{
+      this.message('Error al traer los datos',error.message,'error');
     })
   }
 
@@ -44,8 +46,10 @@ class empleados extends React.Component{
     await axios.post(url, this.state.form).then(Response=>{
       this.abrirModal();
       this.peticionGet();
+      this.message('Empleado guardado exitosamente','','success');
     }).catch(error=>{
       console.log(error.message);
+      this.message('Error al agregar empleado',error.message,'error');
     })
   }
 
@@ -54,6 +58,9 @@ class empleados extends React.Component{
     axios.put(urlPut+this.state.form.id, this.state.form).then(response=>{
       this.abrirModal();
       this.peticionGet();
+      this.message('Cambios guardados exitosamente','','success');
+    }).catch(error =>{
+      this.message('Error al cambiar los datos',error.message,'error');
     })
   }
 
@@ -62,6 +69,9 @@ class empleados extends React.Component{
     axios.delete(urlDelete + this.state.form.id).then(response=>{
       this.setState({modalEliminar: false});
       this.peticionGet();
+      this.message('Usuario eliminado exitosamente','','success');
+    }).catch(error =>{
+      this.message('Error al eliminar usuario',error.message,'error');
     })
   }
 
@@ -86,6 +96,18 @@ class empleados extends React.Component{
         }
       })
     }
+
+  message = (title,message,icon) => {
+    Swal.fire({
+      icon: icon,
+      position: 'top',
+      toast: 'true',
+      timer:'3000',
+      title: title,
+      text: message,
+      showConfirmButton: false,
+    });
+  }
 
   handleChange = async e => {
     e.persist();
@@ -163,14 +185,14 @@ class empleados extends React.Component{
                 <td>{empleados.phoneNumber}</td>
                 <td>{empleados.email}</td>
                 <td>
-                  <button className="excla btn btn-primary" onClick={() => {this.seleccionarProducto(empleados); this.setState({ modalDetalle: true });}}>
-                    <i className="fi fi-rr-info"></i>
-                  </button>
                   <button className="btn btn-primary" onClick={() => {this.seleccionarProducto(empleados); this.abrirModal();}}>
                     <i className="fi fi-rr-pencil"></i>
                   </button>
                   <button className="btn btn-danger" onClick={() => {this.seleccionarProducto(empleados); this.setState({ modalEliminar: true });}}>
                     <i className="fi fi-rr-trash"></i>
+                  </button>
+                  <button className="excla btn btn-primary" onClick={() => {this.seleccionarProducto(empleados); this.setState({ modalDetalle: true });}}>
+                    <i className="fi fi-rr-info"></i>
                   </button>
                 </td>
               </tr>
@@ -274,7 +296,7 @@ class empleados extends React.Component{
 
         <Modal isOpen={this.state.modalEliminar}>
           <ModalBody>
-            <p>Estás seguro que deseas eliminar a <span><h6>{form && form.name}</h6></span>?</p>
+            <p>¿Estás seguro que deseas eliminar a <span>{form && form.name}</span>?</p>
           </ModalBody>
 
           <ModalFooter>
