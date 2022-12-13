@@ -161,12 +161,12 @@ class empleados extends React.Component{
         <thead>
           <tr>
             <th scope="col">Identificación</th>
-            <th scope="col">Nombre</th>
+            <th scope="col">Nombres</th>
             <th scope="col">Apellidos</th>
-            <th scope="col">Cumpleaños</th>
+            <th scope="col">F. Nacimiento</th>
             <th scope="col">Cargo</th>
             <th scope="col">Departamento</th>
-            <th scope="col">Contacto</th> 
+            <th scope="col">Telefono</th> 
             <th scope="col">Correo</th>
             <th scope="col">Opciones</th>
           </tr>

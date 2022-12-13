@@ -1,14 +1,5 @@
 .Modal{
     margin-top: 200px;
-    
-    &::-webkit-scrollbar{
-        width: 5px;
-    }
-
-    &::-webkit-scrollbar-thumb{
-        background-color: #a4a4a4;
-        border-radius: 5px;
-    }
 }
 
 .btn{
