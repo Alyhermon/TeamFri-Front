@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Raleway&family=Roboto:wght@300&display=swap');
 
+*{
+  &::-webkit-scrollbar{
+      width: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb{
+      background-color: #a4a4a4;
+      border-radius: 5px;
+  }
+}
 body {
   margin: 0;
   font-family: 'Open Sans', sans-serif;

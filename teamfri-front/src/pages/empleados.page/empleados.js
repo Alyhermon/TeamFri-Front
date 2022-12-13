@@ -157,8 +157,8 @@ class empleados extends React.Component{
         </div>
       </div>
 
-      <table className="table table-dark tb">
-        <thead>
+      <table className="table table-light table-striped tb">
+        <thead className='table-primary'>
           <tr>
             <th scope="col">Identificación</th>
             <th scope="col">Nombres</th>
@@ -296,7 +296,7 @@ class empleados extends React.Component{
 
         <Modal isOpen={this.state.modalEliminar}>
           <ModalBody>
-            <p>¿Estás seguro que deseas eliminar a <span>{form && form.name}</span>?</p>
+            <p>¿Desea eliminar este campo?</p>
           </ModalBody>
 
           <ModalFooter>
