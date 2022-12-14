@@ -3,6 +3,7 @@ import './empleados.scss';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import {Button, Modal, ModalBody, ModalFooter, FormGroup, Input, Label, ModalHeader} from 'reactstrap';
+import Moment from 'moment';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import Search from '../../components/search/search';
@@ -88,7 +89,7 @@ class empleados extends React.Component{
           identification: empleados.identification,
           name: empleados.name,
           lastName: empleados.lastName,
-          birthDate: empleados.birthDate, 
+          birthDate: empleados, 
           charge: empleados.charge, 
           department: empleados.department,
           phoneNumber: empleados.phoneNumber, 
