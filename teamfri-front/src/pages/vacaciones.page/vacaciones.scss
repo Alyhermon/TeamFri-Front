@@ -1,3 +1,103 @@
 .vacacionestb{
     width: 100%;
 }
+
+.Modal{
+    margin-top: 200px;
+}
+
+.btn{
+    margin-left: 10px;
+}
+
+.excla{
+    width: 40px;
+
+}
+
+#detalles{
+    text-align: center;
+}
+
+.details{
+    display: grid;
+    gap: 30px;
+
+    .atribute{
+        display: flex;
+
+        .p{
+            font-weight: 350;
+            margin-left: 10px;
+        }
+        #Ced{
+            margin-left: 16%;
+        }
+
+        #Nom{
+            margin-left: 13%;
+        }
+
+        #Ape{
+            margin-left: 13%;
+        }
+
+        #Cumpl{
+            margin-left: 6%;
+
+        }
+
+        #Carg{
+            margin-left: 21%;
+        }
+
+        #Depa{
+            margin-left: 1%;
+
+        }
+
+        #Conta{
+            margin-left: 14%;
+        }
+
+        #Corr{
+            margin-left: 19%;
+
+        }
+
+    }
+}
+
+.empleadostb{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .tb{
+        overflow-x: scroll;
+        overflow-y: scroll;
+
+        &::-webkit-scrollbar{
+            width: 5px;
+        }
+    
+        &::-webkit-scrollbar-thumb{
+            background-color: #a4a4a4;
+            border-radius: 5px;
+        }
+    }
+
+    .header{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        .Secundario{
+            display: flex;
+            gap: 10px;
+        }
+
+    }
+
+}
