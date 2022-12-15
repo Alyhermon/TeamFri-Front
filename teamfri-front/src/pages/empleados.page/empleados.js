@@ -3,7 +3,6 @@ import './empleados.scss';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import {Button, Modal, ModalBody, ModalFooter, FormGroup, Input, Label, ModalHeader} from 'reactstrap';
-import Moment from 'moment';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import Search from '../../components/search/search';
@@ -264,8 +263,8 @@ class empleados extends React.Component{
           </ModalHeader>
           
           <ModalBody className='details'>
-          <div className='atribute'>
-              <h4 className='titleNAC'  id='Ced'>Cedula : </h4><h4 className='p'>{form && form.identification}</h4>
+            <div className='atribute'>
+              <h4 className='titleNAC'  id='Ced'>Identificación : </h4><h4 className='p'>{form && form.identification}</h4>
             </div>
             <div className='atribute'>
               <h4 className='titleNA' id='Nom'>Nombres : </h4><h4 className='p'>{form && form.name}</h4>
@@ -274,7 +273,7 @@ class empleados extends React.Component{
               <h4 className='titleNA' id='Ape'>Apellidos : </h4><h4 className='p'>{form && form.lastName}</h4>
             </div>
             <div className='atribute'>
-              <h4 className='titlecumple' id='Cumpl'>Cumpleaños : </h4><h4 className='p'>{form && form.birthDate}</h4>
+              <h4 className='titlecumple' id='Cumpl'>F. Nacimiento : </h4><h4 className='p'>{form && form.birthDate}</h4>
             </div>
             <div className='atribute'>
               <h4 className='title5' id='Carg'>Cargo : </h4><h4 className='p'>{form && form.charge}</h4>
@@ -283,7 +282,7 @@ class empleados extends React.Component{
               <h4 className='titleDepa' id='Depa'>Departamento : </h4><h4 className='p'>{form && form.department}</h4>
             </div>
             <div className='atribute'>
-              <h4 className='titleC' id='Conta'>Contacto : </h4><h4 className='p'>{form && form.phoneNumber}</h4>
+              <h4 className='titleC' id='Conta'>Telefono : </h4><h4 className='p'>{form && form.phoneNumber}</h4>
             </div>
             <div className='atribute'>
               <h4 className='title5' id='Corr'>Correo : </h4><h4 className='p'>{form && form.email}</h4>
