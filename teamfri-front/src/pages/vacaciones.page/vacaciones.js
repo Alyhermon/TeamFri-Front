@@ -2,15 +2,23 @@ import React from 'react'
 import './vacaciones.scss';
 import { Button, Modal, ModalBody, ModalFooter, FormGroup, Input, Label, ModalHeader } from 'reactstrap';
 
+import Search from '../../components/search/search';
+
 class Vacaciones extends React.Component {
 
   render() {
     return (
       <div className='vacacionestb'>
-        <div class="container mb-3">
-          <h1>Vacaciones</h1>
-          <table class="table text-center">
-            <thead>
+
+          <div className='header'>
+            <h1>Vacaciones</h1>
+            <div className='Principal'>
+                <Search handleSearch={this.handleSearch} />
+            </div>
+          </div>
+          
+          <table className="table table-light table-striped tb">
+            <thead className='table-primary'>
               <tr>
                 <th scope="col">Empleado</th>
                 <th scope="col">Codigo</th>
@@ -34,39 +42,10 @@ class Vacaciones extends React.Component {
                   </button>
                 </td>
               </tr>
-              <tr>
-                <td>Manuel</td>
-                <td>251984</td>
-                <td>15/05/2023</td>
-                <td>15/06/2023</td>
-                <td>
-                  <button className="btn btn-primary">
-                    <i className="fi fi-rr-pencil"></i>
-                  </button>
-                  <button className="btn btn-danger">
-                    <i className="fi fi-rr-trash"></i>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>Manuel</td>
-                <td>251984</td>
-                <td>15/05/2023</td>
-                <td>15/06/2023</td>
-                <td>
-                  <button className="btn btn-primary">
-                    <i className="fi fi-rr-pencil"></i>
-                  </button>
-                  <button className="btn btn-danger">
-                    <i className="fi fi-rr-trash"></i>
-                  </button>
-                </td>
-              </tr>
             </tbody>
-          </table></div>
-
-
-        <div className="Modal" class="w-50 container">
+          </table>
+      
+        <div className="Modal w-50 container">
           <Modal>
             <ModalHeader>
               <div id='detalles'>
@@ -98,8 +77,6 @@ class Vacaciones extends React.Component {
           </Modal>
         </div>
       </div>
-
-
     )
   }
 }
