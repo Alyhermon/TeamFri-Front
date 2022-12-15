@@ -69,7 +69,7 @@ class empleados extends React.Component{
     axios.delete(urlDelete + this.state.form.id).then(response=>{
       this.setState({modalEliminar: false});
       this.peticionGet();
-      this.message('Usuario eliminado exitosamente','','success');
+      this.message('Campo eliminado exitosamente','','success');
     }).catch(error =>{
       this.message('Error al eliminar usuario',error.message,'error');
     })
@@ -88,7 +88,7 @@ class empleados extends React.Component{
           identification: empleados.identification,
           name: empleados.name,
           lastName: empleados.lastName,
-          birthDate: empleados, 
+          birthDate: empleados.birthDate, 
           charge: empleados.charge, 
           department: empleados.department,
           phoneNumber: empleados.phoneNumber, 
@@ -218,10 +218,10 @@ class empleados extends React.Component{
 
           <ModalBody>
               <FormGroup>
-                <Label for='Cedula'>Cedula</Label>
+                <Label for='Cedula'>Identificación</Label>
                 <Input type='text' maxlength="13" required name='identification'   onChange={this.handleChange} value={form ?  form.identification: ''}></Input>
 
-                <Label for='Nombre'>Nombre</Label>
+                <Label for='Nombre'>Nombres</Label>
                 <Input type='text' name='name' id='name' required onChange={this.handleChange} value={form ?  form.name: ''}></Input>
 
                 <Label for='Apellidos'>Apellidos</Label>
@@ -290,7 +290,7 @@ class empleados extends React.Component{
           </ModalBody>
 
           <ModalFooter>
-            <Button className="btn btn-primary" onClick={()=> this.setState({modalDetalle: false})}>Aceptar</Button>
+            <Button className="btn" onClick={()=> this.setState({modalDetalle: false})}>Aceptar</Button>
           </ModalFooter>
         </Modal>
 
