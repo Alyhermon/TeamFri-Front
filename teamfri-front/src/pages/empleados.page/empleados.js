@@ -208,11 +208,7 @@ class empleados extends React.Component{
 
           <ModalHeader>
             <div id='detalles'>
-              {this.state.tipoModal === "insertar" ? (
-                <h3>Nuevo empleado</h3>
-              ) : (
-                <h3>Editando a {form && form.name}</h3>
-              )}
+              
             </div>
           </ModalHeader>
 
