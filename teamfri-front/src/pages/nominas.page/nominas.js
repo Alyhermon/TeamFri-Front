@@ -8,7 +8,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Search from '../../components/search/search';
 
 const url = 'https://localhost:44338/api/Payroll';
-const url1 = 'https://localhost:44338/api/Payroll/?id=';
+const url1 = 'https://localhost:44338/api/Payroll?id=';
 
 class Nominas extends React.Component{
 
@@ -36,7 +36,7 @@ class Nominas extends React.Component{
   }
 
   Post = async () => {
-    delete this.state.form.Id;
+    delete this.state.form.id;
     await axios.post(url, this.state.form).then(response => {
         this.openModal();
         this.Get();
@@ -76,7 +76,7 @@ class Nominas extends React.Component{
 
   select = (nomina) => {
     this.setState({
-        tipoModal: 'update',
+        modalType: 'update',
         form: {
             id: nomina.id,
             userId: nomina.userId,
@@ -139,7 +139,7 @@ class Nominas extends React.Component{
             <h1>Nominas</h1>
             <div className='Principal'>
                 <Search handleSearch={this.handleSearch} />
-                <button className='btn btn-success' onClick={() => { this.setState({ form: null, add: "add" }); this.openModal(); }}>Nuevo</button>
+                <button className='btn btn-success' onClick={() => { this.setState({ form: null, modalType: "add" }); this.openModal(); }}>Nuevo</button>
             </div>
         </div>
         <table id="PayrollTable" className="table table-striped table-hover shadow">
@@ -154,7 +154,6 @@ class Nominas extends React.Component{
             </tr>
           </thead>
           <tbody id="Employees-table">
-            {console.log(this.state.data)}
           {this.state.data.map(nomina => {
             return(
               <tr>
@@ -195,7 +194,7 @@ class Nominas extends React.Component{
 
             <ModalHeader>
               <div id='detalles'>
-                {this.state.add === "add" ? (
+                {this.state.modalType === "add" ? (
                     <h3>Agregar a la nomina</h3>
                 ) : (
                     <h3>Editando campo</h3>
@@ -223,7 +222,7 @@ class Nominas extends React.Component{
             </ModalBody>
 
             <ModalFooter>
-              {this.state.add === "add" ? (
+              {this.state.modalType === "add" ? (
                 <button className="btn btn-primary" onClick={() => this.Post()}>Agregar</button>
               ) : (
                 <button className="btn btn-primary" onClick={() => this.Put()}>Guardar cambios</button>
