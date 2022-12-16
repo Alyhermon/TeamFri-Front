@@ -17,7 +17,7 @@ class Vacaciones extends React.Component {
             </div>
           </div>
           
-          <table className="table table-light table-striped tb">
+          <table className="table table-striped table-hover shadow">
             <thead className='table-primary'>
               <tr>
                 <th scope="col">Empleado</th>
