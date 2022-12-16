@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Search from '../../components/search/search';
 
 const url = 'https://localhost:44338/api/Payroll';
+const url1 = 'https://localhost:44338/api/Payroll/?id=';
 
 class Nominas extends React.Component{
 
@@ -16,6 +17,7 @@ class Nominas extends React.Component{
     delete: false,
     data:[],
     form:{ 
+        id: '',
         userId: '',
         date: '',
         hours: '',
@@ -24,13 +26,66 @@ class Nominas extends React.Component{
       }
     }
 
-  //Peticion Get
+  //metodos AJAX
   Get =()=> {
     axios.get(url).then(respon=> {
       this.setState({data: respon.data});
     }).catch(error =>{
       this.message('Error al traer los datos',error.message,'error');
     })
+  }
+
+  Post = async () => {
+    delete this.state.form.Id;
+    await axios.post(url, this.state.form).then(response => {
+        this.openModal();
+        this.Get();
+        this.message('Empleado agregado a la nomina satisfactoriamente', '', 'success');
+    }).catch(error => {
+        console.log(error.message);
+        this.message('Error al agregar a nominas', error.message, 'error');
+    })
+  }
+
+  //editar
+  Put = () => {
+      axios.put(url1 + this.state.form.id, this.state.form).then(response => {
+          this.openModal();
+          this.Get();
+          this.message('Cambios registrados exitosamente', '', 'success');
+      }).catch(error => {
+          this.message('Error al cambiar los datos', error.message, 'error');
+      })
+  }
+
+  //Eliminar
+  Delete = () => {
+      axios.delete(url1 + this.state.form.id).then(response => {
+          this.setState({ deleteModal: false });
+          this.Get();
+          this.message('Campo eliminado exitosamente', '', 'success');
+      }).catch(error => {
+          this.message('Error al eliminar el campo', error.message, 'error');
+      })
+  }
+
+  //---------------------------------------------------------------------
+  openModal = () => {
+    this.setState({ add: !this.state.add });
+  }
+
+  select = (nomina) => {
+    this.setState({
+        tipoModal: 'update',
+        form: {
+            id: nomina.id,
+            userId: nomina.userId,
+            date: nomina.date,
+            hours: nomina.hours,
+            rate: nomina.rate,
+            total: nomina.total,
+            }
+        })
   }
 
   //alertas
@@ -46,18 +101,28 @@ class Nominas extends React.Component{
     });
   }
 
+  handleChange = async e => {
+    e.persist();
+    await this.setState({
+        form: {
+            ...this.state.form,
+            [e.target.userId]: e.target.value
+        }
+    });
+  }
+
   //filtrador
   handleSearch = (search) => {
-    if(search === ''){
-      this.peticionGet();
+    if (search === '') {
+      this.Get();
     } else {
-      let results = this.state.data.filter((element) => {
-        if (element.name.toString().toLowerCase().includes(search.toLowerCase())
-        || (element.lastName.toString().toLowerCase().includes(search.toLowerCase()))){
-          return element;
-        }
-      });
-      this.setState({ data: results});
+        let results = this.state.data.filter(element => {
+            if (element.userId.toString().toLowerCase().includes(search.toLowerCase())) 
+            {
+                return element;
+            }
+        });
+        this.setState({ data: results });
     }
   }
 
@@ -74,6 +139,7 @@ class Nominas extends React.Component{
             <h1>Nominas</h1>
             <div className='Principal'>
                 <Search handleSearch={this.handleSearch} />
+                <button className='btn btn-success' onClick={() => { this.setState({ form: null, add: "add" }); this.openModal(); }}>Nuevo</button>
             </div>
         </div>
         <table id="PayrollTable" className="table table-striped table-hover shadow">
@@ -84,23 +150,27 @@ class Nominas extends React.Component{
               <th scope="col">Salario por Hora</th>
               <th scope="col">Horas trabajadas</th>
               <th scope="col">Salario total</th>
+              <th scope="col">Opciones</th>
             </tr>
           </thead>
           <tbody id="Employees-table">
             {console.log(this.state.data)}
-          {this.state.data.map(field => {
+          {this.state.data.map(nomina => {
             return(
               <tr>
-                <td>{field.userId}</td>
-                <td>{field.date}</td>
-                <td>{field.hours}</td>
-                <td>{field.rate}</td>
-                <td>{field.total}</td>
+                <td>{nomina.userId}</td>
+                <td>{nomina.date}</td>
+                <td>{nomina.hours}</td>
+                <td>{nomina.rate}</td>
+                <td>{nomina.total}</td>
                 <td>
-                  <button className="btn btn-danger">
+                  <button className="btn btn-primary" onClick={() => { this.select(nomina); this.openModal(); }}>
+                    <i className="fi fi-rr-pencil"></i>
+                  </button>
+                  <button className="btn btn-danger" onClick={() => { this.select(nomina); this.setState({ deleteModal: true }); }}>
                     <i className="fi fi-rr-trash"></i>
                   </button>
-                  <button className="excla btn btn-primary">
+                  <button className="excla btn btn-primary" onClick={() => { this.select(nomina); this.setState({ detailsModal: true }); }}>
                     <i className="fi fi-rr-info"></i>
                   </button>
                 </td>
@@ -119,6 +189,90 @@ class Nominas extends React.Component{
             </tr>
           </tfoot>
         </table>
+
+        <div className='modals'>
+          <Modal isOpen={this.state.add}>
+
+            <ModalHeader>
+              <div id='detalles'>
+                {this.state.add === "add" ? (
+                    <h3>Agregar a la nomina</h3>
+                ) : (
+                    <h3>Editando campo</h3>
+                )}
+              </div>
+            </ModalHeader>
+
+            <ModalBody>
+              <FormGroup>
+                <Label for='UserId'>Id del empleado</Label>
+                <Input type='text' required name='userId' onChange={this.handleChange} value={form ? form.userId : ''}></Input>
+
+                <Label for='Inicio'>Fecha</Label>
+                <Input type='date' name='date' id='date' onChange={this.handleChange} value={form ? form.date : ''}></Input>
+
+                <Label for='Retorno'>Horas</Label>
+                <Input type='text' name='hours' onChange={this.handleChange} value={form ? form.hours : ''}></Input>
+
+                <Label for='Taza'>Taza</Label>
+                <Input type='text' name='rate' onChange={this.handleChange} value={form ? form.rate : ''}></Input>
+
+                <Label for='Razon'>Total</Label>
+                <Input type='text' name='reason' onChange={this.handleChange} value={form ? form.total : ''}></Input>
+              </FormGroup>
+            </ModalBody>
+
+            <ModalFooter>
+              {this.state.add === "add" ? (
+                <button className="btn btn-primary" onClick={() => this.Post()}>Agregar</button>
+              ) : (
+                <button className="btn btn-primary" onClick={() => this.Put()}>Guardar cambios</button>
+              )}
+              <button className="btn btn-danger" onClick={() => this.openModal()}>Cancelar</button>
+            </ModalFooter>
+          </Modal>
+
+          <Modal isOpen={this.state.detailsModal}>
+            <ModalHeader>
+              <div id='detalles'>
+                <h3>Detalles</h3>
+              </div>
+            </ModalHeader>
+
+            <ModalBody className='details'>
+              <div className='atribute'>
+                <h4 className='titleNAC' id='Emp'>Id del empleado : </h4><h4 className='p'>{form && form.userId}</h4>
+              </div>
+              <div className='atribute'>
+                <h4 className='titleNA' id='Cod'>Fecha : </h4><h4 className='p'>{form && form.date}</h4>
+              </div>
+              <div className='atribute'>
+                <h4 className='titleNA' id='Fi'>Horas : </h4><h4 className='p'>{form && form.hours}</h4>
+              </div>
+              <div className='atribute'>
+                <h4 className='titlecumple' id='Fr'>Taza : </h4><h4 className='p'>{form && form.rate}</h4>
+              </div>
+              <div className='atribute'>
+                <h4 className='titlecumple' id='Fr'>Total : </h4><h4 className='p'>{form && form.total}</h4>
+              </div>
+            </ModalBody>
+
+            <ModalFooter>
+              <Button className="btn" onClick={() => this.setState({ detailsModal: false })}>Aceptar</Button>
+            </ModalFooter>
+          </Modal>
+
+          <Modal isOpen={this.state.deleteModal}>
+            <ModalBody>
+              <p>¿Desea eliminar este campo?</p>
+            </ModalBody>
+
+            <ModalFooter>
+              <Button className="btn btn-danger" onClick={() => this.Delete()}>Si</Button>
+              <Button className="btn btn-secundary" onClick={() => this.setState({ deleteModal: false })}>No</Button  >
+            </ModalFooter>
+          </Modal>
+        </div>
       </div>
     )
   }
