@@ -160,6 +160,7 @@ class empleados extends React.Component{
       <table className="table table-striped table-hover shadow">
         <thead className='table-primary'>
           <tr>
+            <th scope="col">ID</th>
             <th scope="col">Identificación</th>
             <th scope="col">Nombres</th>
             <th scope="col">Apellidos</th>
@@ -176,6 +177,7 @@ class empleados extends React.Component{
           {this.state.data.map(empleados => {
             return(
               <tr>
+                <td>{empleados.id}</td>
                 <td>{empleados.identification}</td>
                 <td>{empleados.name}</td>
                 <td>{empleados.lastName}</td>
@@ -208,11 +210,7 @@ class empleados extends React.Component{
 
           <ModalHeader>
             <div id='detalles'>
-              {this.state.tipoModal === "insertar" ? (
-                <h3>Nuevo empleado</h3>
-              ) : (
-                <h3>Editando a {form && form.name}</h3>
-              )}
+              
             </div>
           </ModalHeader>
 
