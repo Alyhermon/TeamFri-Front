@@ -210,7 +210,11 @@ class empleados extends React.Component{
 
           <ModalHeader>
             <div id='detalles'>
-              
+            {this.state.tipoModal === "insertar" ? (
+              <h3>Nuevo empleado</h3>
+            ) : (
+              <h3>Editando a {form && form.name}</h3>
+            )}
             </div>
           </ModalHeader>
 
@@ -235,7 +239,7 @@ class empleados extends React.Component{
                 <Input type='text' name='department' id='department' required onChange={this.handleChange} value={form ?  form.department: ''}></Input>
 
                 <Label for='Telefono'>Telefono</Label>
-                <Input type='text' name='phoneNumber' id='phoneNumber' required onChange={this.handleChange} value={form ?  form.phoneNumber: ''}></Input>
+                <Input type='text' maxlength="12" name='phoneNumber' id='phoneNumber' required onChange={this.handleChange} value={form ?  form.phoneNumber: ''}></Input>
 
                 <Label for='Correo'>Correo Electronico</Label>
                 <Input type='email' required name='email' id='email' onChange={this.handleChange} value={form ?  form.email: ''}></Input>
