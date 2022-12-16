@@ -1,11 +1,15 @@
 import React from 'react'
 import './navbar.scss';
 import { NavLink } from 'react-router-dom';
+import logo from './media/employee.png';
 
 function NavBar() {
 
   return (
     <div className='side'>
+        <div className='logo'>
+            <img src={logo}/>
+        </div>
         <ul>
             <NavLink to='/' className='link' activeclassname='active'>
                 <li>
