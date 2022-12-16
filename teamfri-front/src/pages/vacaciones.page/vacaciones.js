@@ -8,7 +8,6 @@ import Search from '../../components/search/search';
 
 const url = 'https://localhost:44338/api/Vacation';
 const url2 = 'https://localhost:44338/api/User';
-const urlselec = 'https://localhost:44338/api/User';
 const urlPut = 'https://localhost:44338/api/Vacation?id='
 const urlDelete = 'https://localhost:44338/api/Vacation/';
 
