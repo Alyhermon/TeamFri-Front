@@ -2,6 +2,7 @@ import React from 'react'
 import './dashboard.scss'
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 import employess from'./media/employees.png';
 import calendar from'./media/calendar.png';
@@ -31,6 +32,18 @@ class DashBoard extends React.Component {
     axios.get(nominaUrl).then(respon=> {
       this.setState({data2: respon.data});
     })
+  }
+
+  message = (title,message,icon) => {
+    Swal.fire({
+      icon: icon,
+      position: 'top',
+      toast: 'true',
+      timer:'3000',
+      title: title,
+      text: message,
+      showConfirmButton: false,
+    });
   }
 
   componentDidMount(){
@@ -63,15 +76,15 @@ class DashBoard extends React.Component {
             </div>
           </div>
           </NavLink>
-          <NavLink to='/nominas' className='link'>
-          <div className='card'>
+          {/* <NavLink to='/nominas' className='link'> */}
+          <div className='card' onClick={() => this.message('Apartado no disponible','Actualmente nominas no se encuentra en funcionamiento para el publico','error')}>
             <img src={nomina} className="card-img-top" alt="..."/>
             <div className='text'>
               <h1>{this.state.data2.length}</h1>
               <h3>En nomina</h3>
             </div>
           </div>
-          </NavLink>
+          {/* </NavLink> */}
         </div>
         <br/>
         <h3>Ultimos Empleados</h3>

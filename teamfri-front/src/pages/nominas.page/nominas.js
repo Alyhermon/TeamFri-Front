@@ -9,6 +9,7 @@ import Search from '../../components/search/search';
 
 const url = 'https://localhost:44338/api/Payroll';
 const url1 = 'https://localhost:44338/api/Payroll?id=';
+const urldelete = 'https://localhost:44338/api/Payroll/';
 
 class Nominas extends React.Component{
 
@@ -26,6 +27,10 @@ class Nominas extends React.Component{
       }
     }
 
+    openModal = () => {
+      this.setState({ add: !this.state.add });
+    }
+
   //metodos AJAX
   Get =()=> {
     axios.get(url).then(respon=> {
@@ -36,7 +41,7 @@ class Nominas extends React.Component{
   }
 
   Post = async () => {
-    delete this.state.form.id;
+    delete this.state.form.Id;
     await axios.post(url, this.state.form).then(response => {
         this.openModal();
         this.Get();
@@ -60,7 +65,7 @@ class Nominas extends React.Component{
 
   //Eliminar
   Delete = () => {
-      axios.delete(url1 + this.state.form.id).then(response => {
+      axios.delete(urldelete + this.state.form.id).then(response => {
           this.setState({ deleteModal: false });
           this.Get();
           this.message('Campo eliminado exitosamente', '', 'success');
@@ -70,9 +75,6 @@ class Nominas extends React.Component{
   }
 
   //---------------------------------------------------------------------
-  openModal = () => {
-    this.setState({ add: !this.state.add });
-  }
 
   select = (nomina) => {
     this.setState({
@@ -145,9 +147,8 @@ class Nominas extends React.Component{
         <table id="PayrollTable" className="table table-striped table-hover shadow">
           <thead className='table-primary'>
             <tr className="text-dark">
-              <th scope="col">ID</th>
               <th scope="col">Empleado</th>
-              <th scope="col">Salario por Hora</th>
+              <th scope="col">Fecha</th>
               <th scope="col">Horas trabajadas</th>
               <th scope="col">Salario total</th>
               <th scope="col">Opciones</th>
@@ -160,7 +161,6 @@ class Nominas extends React.Component{
                 <td>{nomina.userId}</td>
                 <td>{nomina.date}</td>
                 <td>{nomina.hours}</td>
-                <td>{nomina.rate}</td>
                 <td>{nomina.total}</td>
                 <td>
                   <button className="btn btn-primary" onClick={() => { this.select(nomina); this.openModal(); }}>
@@ -193,31 +193,29 @@ class Nominas extends React.Component{
           <Modal isOpen={this.state.add}>
 
             <ModalHeader>
-              <div id='detalles'>
                 {this.state.modalType === "add" ? (
                     <h3>Agregar a la nomina</h3>
                 ) : (
                     <h3>Editando campo</h3>
                 )}
-              </div>
             </ModalHeader>
 
             <ModalBody>
               <FormGroup>
                 <Label for='UserId'>Id del empleado</Label>
-                <Input type='text' required name='userId' onChange={this.handleChange} value={form ? form.userId : ''}></Input>
+                <Input type='text' required name='userId' id='UserId' value={form ? form.userId : ''}></Input>
 
-                <Label for='Inicio'>Fecha</Label>
-                <Input type='date' name='date' id='date' onChange={this.handleChange} value={form ? form.date : ''}></Input>
+                <Label for='date'>Fecha</Label>
+                <Input type='date' name='date' id='date' value={form ? form.date : ''}></Input>
 
-                <Label for='Retorno'>Horas</Label>
-                <Input type='text' name='hours' onChange={this.handleChange} value={form ? form.hours : ''}></Input>
+                <Label for='hours'>Horas</Label>
+                <Input type='text' name='hours' id='hours' value={form ? form.hours : ''}></Input>
 
-                <Label for='Taza'>Taza</Label>
-                <Input type='text' name='rate' onChange={this.handleChange} value={form ? form.rate : ''}></Input>
+                <Label for='rate'>Taza</Label>
+                <Input type='text' name='rate' id='rate' value={form ? form.rate : ''}></Input>
 
-                <Label for='Razon'>Total</Label>
-                <Input type='text' name='reason' onChange={this.handleChange} value={form ? form.total : ''}></Input>
+                <Label for='total'>Total</Label>
+                <Input type='text' name='total' id='total' value={form ? form.total : ''}></Input>
               </FormGroup>
             </ModalBody>
 
