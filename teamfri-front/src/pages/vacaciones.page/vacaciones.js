@@ -7,6 +7,8 @@ import { Button, Modal, ModalBody, ModalFooter, FormGroup, Input, Label, ModalHe
 import Search from '../../components/search/search';
 
 const url = 'https://localhost:44338/api/Vacation';
+const url2 = 'https://localhost:44338/api/User';
+const urlselec = 'https://localhost:44338/api/User';
 const urlPut = 'https://localhost:44338/api/Vacation?id='
 const urlDelete = 'https://localhost:44338/api/Vacation/';
 
@@ -16,6 +18,7 @@ class Vacaciones extends React.Component {
         abrirModal: false,
         modalEliminar: false,
         data: [],
+        data2: [],
         form: {
             id: '',
             userId: '',
@@ -25,6 +28,7 @@ class Vacaciones extends React.Component {
         }
     }
 
+
     // Get
 
     Get = () => {
@@ -32,6 +36,14 @@ class Vacaciones extends React.Component {
             this.setState({ data: response.data });
         }).catch(error => {
             this.message('Error al traer los datos', error.message, 'error');
+        })
+    }
+
+    Getempleados = () => {
+        axios.get(url2).then(response => {
+            this.setState({ data2: response.data });
+        }).catch(error => {
+            this.message('Error al traer los datos2', error.message, 'error');
         })
     }
 
@@ -126,6 +138,14 @@ class Vacaciones extends React.Component {
         }
     }
 
+    buscar(empleados, id) {
+
+        if (id === empleados.id) {
+            return empleados.name;
+        } else { };
+
+}
+
     componentDidMount() {
         this.Get();
     }
@@ -150,7 +170,7 @@ class Vacaciones extends React.Component {
               <table className="table table-light table-striped tb">
                 <thead className='table-primary'>
                   <tr>
-                    <th scope="col">Id</th>
+                    <th scope="col">Id de empleado</th>
                     <th scope="col">Fecha inicio</th>
                     <th scope="col">Fecha retorno</th>
                     <th scope="col">Razon</th>

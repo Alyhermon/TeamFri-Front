@@ -160,6 +160,7 @@ class empleados extends React.Component{
       <table className="table table-light table-striped tb">
         <thead className='table-primary'>
           <tr>
+            <th scope="col">ID</th>
             <th scope="col">Identificación</th>
             <th scope="col">Nombres</th>
             <th scope="col">Apellidos</th>
@@ -176,6 +177,7 @@ class empleados extends React.Component{
           {this.state.data.map(empleados => {
             return(
               <tr>
+                <td>{empleados.id}</td>
                 <td>{empleados.identification}</td>
                 <td>{empleados.name}</td>
                 <td>{empleados.lastName}</td>
