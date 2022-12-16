@@ -8,10 +8,12 @@ import calendar from'./media/calendar.png';
 import nomina from'./media/nomina.png';
 
 const url = 'https://localhost:44338/api/User';
+const nominaUrl = 'https://localhost:44338/api/Payroll';
+const vacacionesUrl = 'https://localhost:44338/api/Vacation';
 
 class DashBoard extends React.Component {
 
-  state = { data: [] }
+  state = { data: [], data1: [], data2: []}
 
   employees =()=> {
     axios.get(url).then(respon=> {
@@ -19,8 +21,22 @@ class DashBoard extends React.Component {
     })
   }
 
+  vacations =()=> {
+    axios.get(vacacionesUrl).then(respon=> {
+      this.setState({data1: respon.data});
+    })
+  }
+
+  nominas =()=> {
+    axios.get(nominaUrl).then(respon=> {
+      this.setState({data2: respon.data});
+    })
+  }
+
   componentDidMount(){
     this.employees();
+    this.vacations();
+    this.nominas();
   }
 
   render(){
@@ -42,7 +58,7 @@ class DashBoard extends React.Component {
           <div className="card">
             <img src={calendar} className="card-img-top" alt="..."/>
             <div className='text'>
-              <h1>0</h1> {/*numero representativo */}
+              <h1>{this.state.data1.length}</h1> {/*numero representativo */}
               <h3>Vacaciones</h3>
             </div>
           </div>
@@ -51,8 +67,8 @@ class DashBoard extends React.Component {
           <div className='card'>
             <img src={nomina} className="card-img-top" alt="..."/>
             <div className='text'>
-              <h1>0</h1>
-              <h3>Nomina</h3>
+              <h1>{this.state.data2.length}</h1>
+              <h3>En nomina</h3>
             </div>
           </div>
           </NavLink>

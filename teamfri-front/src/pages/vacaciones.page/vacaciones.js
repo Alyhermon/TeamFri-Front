@@ -203,81 +203,80 @@ class Vacaciones extends React.Component {
               </table>
       
             <div className="Modal w-50 container">
-              <Modal isOpen={this.state.abrirModal}>
+                <Modal isOpen={this.state.abrirModal}>
+                    <ModalHeader>
+                        <div id='detalles'>
+                            {this.state.tipoModal === "insertar" ? (
+                                <h3>Agregar vacaciones</h3>
+                            ) : (
+                                <h3>Editando a {form && form.name}</h3>
+                            )}
+                        </div>
+                    </ModalHeader>
 
-                <ModalHeader>
-                  <div id='detalles'>
-                     {this.state.tipoModal === "insertar" ? (
-                         <h3>Agregar vacaciones</h3>
-                     ) : (
-                         <h3>Editando a {form && form.name}</h3>
-                     )}
-                  </div>
-                </ModalHeader>
+                    <ModalBody>
+                        <FormGroup>
+                            <Label for='UserId'>Id</Label>
+                            <Input type='text' required name='userId' onChange={this.handleChange} value={form ? form.userId : ''}></Input>
 
-                <ModalBody>
-                  <FormGroup>
-                    <Label for='UserId'>Id</Label>
-                                <Input type='text' required name='userId' onChange={this.handleChange} value={form ? form.userId : ''}></Input>
+                            <Label for='Inicio'>Fecha de Inicio</Label>
+                            <Input type='date' name='startDate' id='startDate' onChange={this.handleChange} value={form ? form.startDate : ''}></Input>
 
-                    <Label for='Inicio'>Fecha de Inicio</Label>
-                                <Input type='date' name='startDate' id='startDate' onChange={this.handleChange} value={form ? form.startDate : ''}></Input>
+                            <Label for='Retorno'>Fecha de Retorno</Label>
+                            <Input type='date' name='endDate' onChange={this.handleChange} value={form ? form.endDate : ''}></Input>
 
-                    <Label for='Retorno'>Fecha de Retorno</Label>
-                                <Input type='date' name='endDate' onChange={this.handleChange} value={form ? form.endDate : ''}></Input>
+                            <Label for='Razon'>Razon</Label>
+                            <Input type='text' name='reason' onChange={this.handleChange} value={form ? form.reason : ''}></Input>
+                        </FormGroup>
+                    </ModalBody>
 
-                    <Label for='Razon'>Razon</Label>
-                                <Input type='text' name='reason' onChange={this.handleChange} value={form ? form.reason : ''}></Input>
-                  </FormGroup>
-                </ModalBody>
-
-                <ModalFooter>
-                   {this.state.tipoModal === "insertar" ? (
-                     <button className="btn btn-primary" onClick={() => this.Post()}>Agregar</button>
-                   ) : (
-                     <button className="btn btn-primary" onClick={() => this.Put()}>Guardar cambios</button>
-                   )}
-                   <button className="btn btn-danger" onClick={() => this.abrirModal()}>Cancelar</button>
-                </ModalFooter>
-                    </Modal>
+                    <ModalFooter>
+                        {this.state.tipoModal === "insertar" ? (
+                            <button className="btn btn-primary" onClick={() => this.Post()}>Agregar</button>
+                        ) : (
+                            <button className="btn btn-primary" onClick={() => this.Put()}>Guardar cambios</button>
+                        )}
+                        <button className="btn btn-danger" onClick={() => this.abrirModal()}>Cancelar</button>
+                    </ModalFooter>
+                </Modal>
                     {/* modal de detalles */}
-                    <Modal isOpen={this.state.modalDetalle}>
-                        <ModalHeader>
-                            <div id='detalles'>
-                                <h3>Detalles de {form && form.vacaciones}</h3>
-                            </div>
-                        </ModalHeader>
+                <Modal isOpen={this.state.modalDetalle}>
+                    <ModalHeader>
+                        <div id='detalles'>
+                            <h3>Detalles de {form && form.vacaciones}</h3>
+                        </div>
+                    </ModalHeader>
 
-                        <ModalBody className='details'>
-                            <div className='atribute'>
-                                <h4 className='titleNAC' id='Emp'>Empleado : </h4><h4 className='p'>{form && form.userId}</h4>
-                            </div>
-                            <div className='atribute'>
-                                <h4 className='titleNA' id='Cod'>Codigo : </h4><h4 className='p'>{form && form.startDate}</h4>
-                            </div>
-                            <div className='atribute'>
-                                <h4 className='titleNA' id='Fi'>Fecha de inicio : </h4><h4 className='p'>{form && form.endDate}</h4>
-                            </div>
-                            <div className='atribute'>
-                                <h4 className='titlecumple' id='Fr'>Fecha de retorno : </h4><h4 className='p'>{form && form.reason}</h4>
-                            </div>
-                            </ModalBody>
+                    <ModalBody className='details'>
+                        <div className='atribute'>
+                            <h4 className='titleNAC' id='Emp'>Empleado : </h4><h4 className='p'>{form && form.userId}</h4>
+                        </div>
+                        <div className='atribute'>
+                            <h4 className='titleNA' id='Cod'>Codigo : </h4><h4 className='p'>{form && form.startDate}</h4>
+                        </div>
+                        <div className='atribute'>
+                            <h4 className='titleNA' id='Fi'>Fecha de inicio : </h4><h4 className='p'>{form && form.endDate}</h4>
+                        </div>
+                        <div className='atribute'>
+                            <h4 className='titlecumple' id='Fr'>Fecha de retorno : </h4><h4 className='p'>{form && form.reason}</h4>
+                        </div>
+                    </ModalBody>
 
-                        <ModalFooter>
-                            <Button className="btn" onClick={() => this.setState({ modalDetalle: false })}>Aceptar</Button>
-                        </ModalFooter>
-                    </Modal>
+                    <ModalFooter>
+                        <Button className="btn" onClick={() => this.setState({ modalDetalle: false })}>Aceptar</Button>
+                    </ModalFooter>
+                </Modal>
 
-                    <Modal isOpen={this.state.modalEliminar}>
-                        <ModalBody>
-                            <p>¿Desea eliminar este campo?</p>
-                        </ModalBody>
+                <Modal isOpen={this.state.modalEliminar}>
+                    <ModalBody>
+                        <p>Â¿Desea eliminar este campo?</p>
+                    </ModalBody>
 
-                        <ModalFooter>
-                            <Button className="btn btn-danger" onClick={() => this.Delete()}>Sí</Button>
-                            <Button className="btn btn-secundary" onClick={() => this.setState({ modalEliminar: false })}>No</Button  >
-                        </ModalFooter>
-                    </Modal>
+                    <ModalFooter>
+                        <Button className="btn btn-danger" onClick={() => this.Delete()}>Si</Button>
+                        <Button className="btn btn-secundary" onClick={() => this.setState({ modalEliminar: false })}>No</Button  >
+                    </ModalFooter>
+                </Modal>
 
             </div>
           </div>
